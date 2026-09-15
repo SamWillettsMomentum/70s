@@ -1,0 +1,160 @@
+{
+  "model": "Compact Elegance",
+  "base_model_price": "$133,000",
+  "options_list": [
+    {
+      "category": "Exterior Cladding Options (windows to match)",
+      "options": [
+        {
+          "name": "Corrugated Iron - Grey Friars",
+          "price": "$0",
+          "ui_component_type": "Box With Image"
+        },
+        {
+          "name": "Corrugated Iron - Ebony",
+          "price": "$0"
+        },
+        {
+          "name": "Corrugated Iron - Sandstone Grey",
+          "price": "$0"
+        },
+        {
+          "name": "UniCote LUX - Printed Corten Red/Corrugated Iron - Ebony",
+          "price": "$0"
+        }
+      ]
+    },
+    {
+      "category": "Interior Linning Options",
+      "options": [
+        {
+          "name": "White Gib / Redline Ply Lounge Ceiling",
+          "price": "$0",
+          "ui_component_type": "Box With Image"
+        },
+        {
+          "name": "White Gib / Blondline Ply Lounge Ceiling",
+          "price": "$0"
+        },
+        {
+          "name": "Redline Ply Everywhere",
+          "price": "$0"
+        },
+        {
+          "name": "Blondline Ply Everywhere",
+          "price": "$0"
+        }
+      ]
+    },
+    {
+      "category": "Flooring Options - Strata Premium Hush",
+      "options": [
+        {
+          "name": "Premium Hush - Smooth Oak High Noon",
+          "price": "$6,900",
+          "ui_component_type": "Box With Image"
+        },
+        {
+          "name": "Premium Hush - Turin Oak Slacked Oyster",
+          "price": "$6,900"
+        },
+        {
+          "name": "Premium Hush - Swiss Oak Burn",
+          "price": "$6,900"
+        },
+        {
+          "name": "None",
+          "price": ""
+        }
+      ]
+    },
+    {
+      "category": "Fireplace",
+      "options": [
+        {
+          "name": "Freestanding Wood Fire",
+          "price": "$2,198.32",
+          "ui_component_type": "Box Without Image"
+        },
+        {
+          "name": "No Fireplace",
+          "price": ""
+        }
+      ]
+    },
+    {
+      "category": "Heatpump",
+      "options": [
+        {
+          "name": "Comfort Wall Mounted Heat Pump",
+          "price": "$2,601.99",
+          "ui_component_type": "Box Without Image"
+        },
+        {
+          "name": "No Heat Pump",
+          "price": "$0"
+        }
+      ]
+    },
+    {
+      "category": "Water Heating Option",
+      "options": [
+        {
+          "name": "Infinity A24 External LPG",
+          "price": "$2,004.28",
+          "ui_component_type": "Box Without Image"
+        },
+        {
+          "name": "Ambipower Hot Water Heat Pump",
+          "price": "$3,799.14"
+        },
+        {
+          "name": "No Water Heating",
+          "price": "$0"
+        }
+      ]
+    },
+    {
+      "category": "Laundry Joinery",
+      "options": [
+        {
+          "name": "Yes",
+          "price": "$4,800",
+          "ui_component_type": "Box Without Image"
+        },
+        {
+          "name": "No",
+          "price": "$0"
+        }
+      ]
+    },
+    {
+      "category": "Bedroom Wardrobes",
+      "options": [
+        {
+          "name": "1x Unit",
+          "price": "$2,500",
+          "ui_component_type": "Box Without Image"
+        },
+        {
+          "name": "No Bedroom Wardrobes",
+          "price": "$0"
+        }
+      ]
+    },
+    {
+      "category": "Solar Options",
+      "options": [
+        {
+          "name": "4.05kW Solar",
+          "price": "$16,993.20",
+          "ui_component_type": "Box Without Image"
+        },
+        {
+          "name": "No Solar",
+          "price": "$0"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,167 @@
+{
+    "scenes": [
+      {
+        "title": "Staggered Harmony",
+        "anchor": "horizontal",
+        "id": "79e51489-718b-49f2-876e-e85473685b8d",
+        "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=79e51489-718b-49f2-876e-e85473685b8d",
+        "configuratorUrl": "https://app.plattar.com/configurator/dist/index.html?sceneId=79e51489-718b-49f2-876e-e85473685b8d",
+        "sceneproducts": [
+          {
+            "instanceId": "5ba0179b-c195-4cc7-b79f-81f8b993c16a",
+            "instanceTitle": "Staggered Harmony Interior",
+            "product": {
+              "id": "017ed9f0-7820-4c93-a353-b5fcba470645",
+              "title": "Staggered Harmony Interior",
+              "sku": null
+            },
+            "variations": [
+              {
+                "id": "7bbff744-2b24-4717-bd57-dc9db00e26a9",
+                "title": "Interior",
+                "sku": null,
+                "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=79e51489-718b-49f2-876e-e85473685b8d&variation_id=7bbff744-2b24-4717-bd57-dc9db00e26a9",
+                "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=79e51489-718b-49f2-876e-e85473685b8d&variation_id=7bbff744-2b24-4717-bd57-dc9db00e26a9"
+              }
+            ]
+          },
+          {
+            "instanceId": "8126b65a-1bd9-4e14-aadb-63e2b8df9951",
+            "instanceTitle": "Staggered Harmony Hotwater",
+            "product": {
+              "id": "47d70086-68d8-4266-b0d8-80cfba7eee2d",
+              "title": "Staggered Harmony Hotwater",
+              "sku": null
+            },
+            "variations": [
+              {
+                "id": "22d0c2e3-03fd-4514-811e-e3a1f9c44eca",
+                "title": "None",
+                "sku": null,
+                "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=79e51489-718b-49f2-876e-e85473685b8d&variation_id=22d0c2e3-03fd-4514-811e-e3a1f9c44eca",
+                "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=79e51489-718b-49f2-876e-e85473685b8d&variation_id=22d0c2e3-03fd-4514-811e-e3a1f9c44eca"
+              },
+              {
+                "id": "8dc070b0-aa0e-486b-9fe0-60a019de1751",
+                "title": "Gas Infinity",
+                "sku": null,
+                "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=79e51489-718b-49f2-876e-e85473685b8d&variation_id=8dc070b0-aa0e-486b-9fe0-60a019de1751",
+                "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=79e51489-718b-49f2-876e-e85473685b8d&variation_id=8dc070b0-aa0e-486b-9fe0-60a019de1751"
+              },
+              {
+                "id": "dad4904d-0027-4107-97ca-79ccf0639ff8",
+                "title": "Hot Water",
+                "sku": null,
+                "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=79e51489-718b-49f2-876e-e85473685b8d&variation_id=dad4904d-0027-4107-97ca-79ccf0639ff8",
+                "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=79e51489-718b-49f2-876e-e85473685b8d&variation_id=dad4904d-0027-4107-97ca-79ccf0639ff8"
+              }
+            ]
+          },
+          {
+            "instanceId": "9bb97194-fddd-4b30-b721-3d67358ec933",
+            "instanceTitle": "Staggered Harmony Solar",
+            "product": {
+              "id": "5daa6ca6-c80a-4f9d-94cb-611d1697915d",
+              "title": "Staggered Harmony Solar",
+              "sku": null
+            },
+            "variations": [
+              {
+                "id": "29c774f6-0c3a-4151-95a5-7438733ed44d",
+                "title": "None",
+                "sku": null,
+                "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=79e51489-718b-49f2-876e-e85473685b8d&variation_id=29c774f6-0c3a-4151-95a5-7438733ed44d",
+                "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=79e51489-718b-49f2-876e-e85473685b8d&variation_id=29c774f6-0c3a-4151-95a5-7438733ed44d"
+              },
+              {
+                "id": "58677331-3a23-41cd-851c-1375adc9b59c",
+                "title": "Solar",
+                "sku": null,
+                "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=79e51489-718b-49f2-876e-e85473685b8d&variation_id=58677331-3a23-41cd-851c-1375adc9b59c",
+                "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=79e51489-718b-49f2-876e-e85473685b8d&variation_id=58677331-3a23-41cd-851c-1375adc9b59c"
+              }
+            ]
+          },
+          {
+            "instanceId": "f7e8baee-05f4-403e-8c11-0c569765a576",
+            "instanceTitle": "Staggered Harmony Heating",
+            "product": {
+              "id": "50fac21d-9f49-4943-9e8b-82cec407b7cf",
+              "title": "Staggered Harmony Heating",
+              "sku": null
+            },
+            "variations": [
+              {
+                "id": "035e09ab-37cd-4dbd-85ba-10cef2795a6d",
+                "title": "Heatpump",
+                "sku": null,
+                "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=79e51489-718b-49f2-876e-e85473685b8d&variation_id=035e09ab-37cd-4dbd-85ba-10cef2795a6d",
+                "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=79e51489-718b-49f2-876e-e85473685b8d&variation_id=035e09ab-37cd-4dbd-85ba-10cef2795a6d"
+              },
+              {
+                "id": "d3c89450-6513-4aec-a933-f89f33305a3b",
+                "title": "Fireplace",
+                "sku": null,
+                "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=79e51489-718b-49f2-876e-e85473685b8d&variation_id=d3c89450-6513-4aec-a933-f89f33305a3b",
+                "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=79e51489-718b-49f2-876e-e85473685b8d&variation_id=d3c89450-6513-4aec-a933-f89f33305a3b"
+              },
+              {
+                "id": "d86d372d-cef6-4256-b940-10a31c0ce7a0",
+                "title": "Fire + Heatpump",
+                "sku": null,
+                "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=79e51489-718b-49f2-876e-e85473685b8d&variation_id=d86d372d-cef6-4256-b940-10a31c0ce7a0",
+                "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=79e51489-718b-49f2-876e-e85473685b8d&variation_id=d86d372d-cef6-4256-b940-10a31c0ce7a0"
+              },
+              {
+                "id": "e1b26bf8-45f0-4a33-9498-afb05565611c",
+                "title": "None",
+                "sku": null,
+                "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=79e51489-718b-49f2-876e-e85473685b8d&variation_id=e1b26bf8-45f0-4a33-9498-afb05565611c",
+                "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=79e51489-718b-49f2-876e-e85473685b8d&variation_id=e1b26bf8-45f0-4a33-9498-afb05565611c"
+              }
+            ]
+          },
+          {
+            "instanceId": "f9343cdb-f3eb-4bd6-91ce-8359a7225137",
+            "instanceTitle": "Staggered Harmony Exterior",
+            "product": {
+              "id": "14565d38-0a84-4b58-931e-9e35679b53ef",
+              "title": "Staggered Harmony Exterior",
+              "sku": null
+            },
+            "variations": [
+              {
+                "id": "129b77b7-c712-45af-a0a3-311736dc8924",
+                "title": "Grey Friars",
+                "sku": null,
+                "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=79e51489-718b-49f2-876e-e85473685b8d&variation_id=129b77b7-c712-45af-a0a3-311736dc8924",
+                "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=79e51489-718b-49f2-876e-e85473685b8d&variation_id=129b77b7-c712-45af-a0a3-311736dc8924"
+              },
+              {
+                "id": "2943236f-cb28-4fba-a737-b608829fa85b",
+                "title": "Ebony",
+                "sku": null,
+                "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=79e51489-718b-49f2-876e-e85473685b8d&variation_id=2943236f-cb28-4fba-a737-b608829fa85b",
+                "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=79e51489-718b-49f2-876e-e85473685b8d&variation_id=2943236f-cb28-4fba-a737-b608829fa85b"
+              },
+              {
+                "id": "b1513f8f-c593-4805-b6b4-33515589f78e",
+                "title": "Corten",
+                "sku": null,
+                "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=79e51489-718b-49f2-876e-e85473685b8d&variation_id=b1513f8f-c593-4805-b6b4-33515589f78e",
+                "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=79e51489-718b-49f2-876e-e85473685b8d&variation_id=b1513f8f-c593-4805-b6b4-33515589f78e"
+              },
+              {
+                "id": "b4383fc5-5c7d-440a-9f5c-22c1af02b0d6",
+                "title": "Sandstone",
+                "sku": null,
+                "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=79e51489-718b-49f2-876e-e85473685b8d&variation_id=b4383fc5-5c7d-440a-9f5c-22c1af02b0d6",
+                "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=79e51489-718b-49f2-876e-e85473685b8d&variation_id=b4383fc5-5c7d-440a-9f5c-22c1af02b0d6"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "products": []
+  }

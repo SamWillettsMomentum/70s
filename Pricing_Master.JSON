@@ -1,0 +1,762 @@
+[
+  {
+    "model": "Staggered Harmony",
+    "base_price": 175000.0,
+    "options": {
+      "Exterior Cladding": [
+        {
+          "option": "Corrugated Iron - Grey Friars",
+          "price": 0,
+          "ui_component": "Box With Image"
+        },
+        {
+          "option": "Corrugated Iron - Ebony",
+          "price": 0,
+          "ui_component": "Box With Image"
+        },
+        {
+          "option": "Corrugated Iron - Sandstone Grey",
+          "price": 0,
+          "ui_component": "Box With Image"
+        },
+        {
+          "option": "UniCote LUX - Printed Corten Red/Corrugated Iron - Ebony",
+          "price": 0,
+          "ui_component": "Box With Image"
+        }
+      ],
+      "Interior Lining": [
+        {
+          "option": "White Gib / Redline Ply Lounge Ceiling",
+          "price": 0,
+          "ui_component": "Box With Image"
+        },
+        {
+          "option": "White Gib / Blondline Ply Lounge Ceiling",
+          "price": 0,
+          "ui_component": "Box With Image"
+        },
+        {
+          "option": "Redline Ply Everywhere",
+          "price": 0,
+          "ui_component": "Box With Image"
+        },
+        {
+          "option": "Blondline Ply Everywhere",
+          "price": 0,
+          "ui_component": "Box With Image"
+        }
+      ],
+      "Flooring": [
+        {
+          "option": "Premium Hush - Smooth Oak High Noon",
+          "price": 8900.0,
+          "ui_component": "Box With Image"
+        },
+        {
+          "option": "Premium Hush - Turin Oak Slacked Oyster",
+          "price": 8900.0,
+          "ui_component": "Box With Image"
+        },
+        {
+          "option": "Premium Hush - Swiss Oak Burn",
+          "price": 8900.0,
+          "ui_component": "Box With Image"
+        },
+        {
+          "option": "None",
+          "price": 0.0,
+          "ui_component": "Box With Image"
+        }
+      ],
+      "Fireplace": [
+        {
+          "option": "Freestanding Wood Fire",
+          "price": 2198.32,
+          "ui_component": "Box Without Image"
+        },
+        {
+          "option": "No Fireplace",
+          "price": 0.0,
+          "ui_component": "Box Without Image"
+        }
+      ],
+      "Heatpump": [
+        {
+          "option": "Comfort Wall Mounted Heat Pump",
+          "price": 2601.99,
+          "ui_component": "Box Without Image"
+        },
+        {
+          "option": "No Heat Pump",
+          "price": 0.0,
+          "ui_component": "Box Without Image"
+        }
+      ],
+      "Water Heating": [
+        {
+          "option": "Infinity A24 External LPG",
+          "price": 2004.28,
+          "ui_component": "Box Without Image"
+        },
+        {
+          "option": "Ambipower Hot Water Heat Pump",
+          "price": 3799.14,
+          "ui_component": "Box Without Image"
+        },
+        {
+          "option": "No Water Heating",
+          "price": 0.0,
+          "ui_component": "Box Without Image"
+        }
+      ],
+      "Laundry Joinery": [
+        {
+          "option": "Yes",
+          "price": 5700.0,
+          "ui_component": "Box Without Image"
+        },
+        {
+          "option": "No",
+          "price": 0.0,
+          "ui_component": "Box Without Image"
+        }
+      ],
+      "Bedroom Wardrobes": [
+        {
+          "option": "1x Unit",
+          "price": 2500.0,
+          "ui_component": "Box Without Image"
+        },
+        {
+          "option": "2x Units",
+          "price": 5000.0,
+          "ui_component": "Box Without Image"
+        },
+        {
+          "option": "No Bedroom Wardrobes",
+          "price": 0.0,
+          "ui_component": "Box Without Image"
+        }
+      ],
+      "Solar Options": [
+        {
+          "option": "9kW Solar",
+          "price": 25927.6,
+          "ui_component": "Box Without Image"
+        },
+        {
+          "option": "No Solar",
+          "price": 0.0,
+          "ui_component": "Box Without Image"
+        }
+      ]
+    }
+  },
+  {
+    "model": "Compact Harmony",
+    "base_price": 135000.0,
+    "options": {
+      "Exterior Cladding": [
+        {
+          "option": "Corrugated Iron - Grey Friars",
+          "price": 0,
+          "ui_component": "Box With Image"
+        },
+        {
+          "option": "Corrugated Iron - Ebony",
+          "price": 0,
+          "ui_component": "Box With Image"
+        },
+        {
+          "option": "Corrugated Iron - Sandstone Grey",
+          "price": 0,
+          "ui_component": "Box With Image"
+        },
+        {
+          "option": "UniCote LUX - Printed Corten Red/Corrugated Iron - Ebony",
+          "price": 0,
+          "ui_component": "Box With Image"
+        }
+      ],
+      "Interior Lining": [
+        {
+          "option": "White Gib / Redline Ply Lounge Ceiling",
+          "price": 0,
+          "ui_component": "Box With Image"
+        },
+        {
+          "option": "White Gib / Blondline Ply Lounge Ceiling",
+          "price": 0,
+          "ui_component": "Box With Image"
+        },
+        {
+          "option": "Redline Ply Everywhere",
+          "price": 0,
+          "ui_component": "Box With Image"
+        },
+        {
+          "option": "Blondline Ply Everywhere",
+          "price": 0,
+          "ui_component": "Box With Image"
+        }
+      ],
+      "Flooring": [
+        {
+          "option": "Premium Hush - Smooth Oak High Noon",
+          "price": 6500.0,
+          "ui_component": "Box With Image"
+        },
+        {
+          "option": "Premium Hush - Turin Oak Slacked Oyster",
+          "price": 6500.0,
+          "ui_component": "Box With Image"
+        },
+        {
+          "option": "Premium Hush - Swiss Oak Burn",
+          "price": 6500.0,
+          "ui_component": "Box With Image"
+        },
+        {
+          "option": "None",
+          "price": 0.0,
+          "ui_component": "Box With Image"
+        }
+      ],
+      "Fireplace": [
+        {
+          "option": "Freestanding Wood Fire",
+          "price": 2198.32,
+          "ui_component": "Box Without Image"
+        },
+        {
+          "option": "No Fireplace",
+          "price": 0.0,
+          "ui_component": "Box Without Image"
+        }
+      ],
+      "Heatpump": [
+        {
+          "option": "Comfort Wall Mounted Heat Pump",
+          "price": 2601.99,
+          "ui_component": "Box Without Image"
+        },
+        {
+          "option": "No Heat Pump",
+          "price": 0.0,
+          "ui_component": "Box Without Image"
+        }
+      ],
+      "Water Heating": [
+        {
+          "option": "Infinity A24 External LPG",
+          "price": 2004.28,
+          "ui_component": "Box Without Image"
+        },
+        {
+          "option": "Ambipower Hot Water Heat Pump",
+          "price": 3799.14,
+          "ui_component": "Box Without Image"
+        },
+        {
+          "option": "No Water Heating",
+          "price": 0.0,
+          "ui_component": "Box Without Image"
+        }
+      ],
+      "Laundry Joinery": [
+        {
+          "option": "Yes",
+          "price": 4500.0,
+          "ui_component": "Box Without Image"
+        },
+        {
+          "option": "No",
+          "price": 0.0,
+          "ui_component": "Box Without Image"
+        }
+      ],
+      "Bedroom Wardrobes": [
+        {
+          "option": "1x Unit",
+          "price": 2500.0,
+          "ui_component": "Box Without Image"
+        },
+        {
+          "option": "No Bedroom Wardrobes",
+          "price": 0.0,
+          "ui_component": "Box Without Image"
+        }
+      ],
+      "Solar Options": [
+        {
+          "option": "6.75 kW Solar",
+          "price": 23267.7,
+          "ui_component": "Box Without Image"
+        },
+        {
+          "option": "No Solar",
+          "price": 0.0,
+          "ui_component": "Box Without Image"
+        }
+      ]
+    }
+  },
+  {
+    "model": "Straight Elegance",
+    "base_price": 172000.0,
+    "options": {
+      "Exterior Cladding": [
+        {
+          "option": "Corrugated Iron - Grey Friars",
+          "price": 0,
+          "ui_component": "Box With Image"
+        },
+        {
+          "option": "Corrugated Iron - Ebony",
+          "price": 0,
+          "ui_component": "Box With Image"
+        },
+        {
+          "option": "Corrugated Iron - Sandstone Grey",
+          "price": 0,
+          "ui_component": "Box With Image"
+        },
+        {
+          "option": "UniCote LUX - Printed Corten Red/Corrugated Iron - Ebony",
+          "price": 0,
+          "ui_component": "Box With Image"
+        }
+      ],
+      "Interior Lining": [
+        {
+          "option": "White Gib / Redline Ply Lounge Ceiling",
+          "price": 0,
+          "ui_component": "Box With Image"
+        },
+        {
+          "option": "White Gib / Blondline Ply Lounge Ceiling",
+          "price": 0,
+          "ui_component": "Box With Image"
+        },
+        {
+          "option": "Redline Ply Everywhere",
+          "price": 0,
+          "ui_component": "Box With Image"
+        },
+        {
+          "option": "Blondline Ply Everywhere",
+          "price": 0,
+          "ui_component": "Box With Image"
+        }
+      ],
+      "Flooring": [
+        {
+          "option": "Premium Hush - Smooth Oak High Noon",
+          "price": 8900.0,
+          "ui_component": "Box With Image"
+        },
+        {
+          "option": "Premium Hush - Turin Oak Slacked Oyster",
+          "price": 8900.0,
+          "ui_component": "Box With Image"
+        },
+        {
+          "option": "Premium Hush - Swiss Oak Burn",
+          "price": 8900.0,
+          "ui_component": "Box With Image"
+        },
+        {
+          "option": "None",
+          "price": 0.0,
+          "ui_component": "Box With Image"
+        }
+      ],
+      "Fireplace": [
+        {
+          "option": "Freestanding Wood Fire",
+          "price": 2198.32,
+          "ui_component": "Box Without Image"
+        },
+        {
+          "option": "No Fireplace",
+          "price": 0.0,
+          "ui_component": "Box Without Image"
+        }
+      ],
+      "Heatpump": [
+        {
+          "option": "Comfort Wall Mounted Heat Pump",
+          "price": 2601.99,
+          "ui_component": "Box Without Image"
+        },
+        {
+          "option": "No Heat Pump",
+          "price": 0.0,
+          "ui_component": "Box Without Image"
+        }
+      ],
+      "Water Heating": [
+        {
+          "option": "Infinity A24 External LPG",
+          "price": 2004.28,
+          "ui_component": "Box Without Image"
+        },
+        {
+          "option": "Ambipower Hot Water Heat Pump",
+          "price": 3799.14,
+          "ui_component": "Box Without Image"
+        },
+        {
+          "option": "No Water Heating",
+          "price": 0.0,
+          "ui_component": "Box Without Image"
+        }
+      ],
+      "Laundry Joinery": [
+        {
+          "option": "Yes",
+          "price": 4800.0,
+          "ui_component": "Box Without Image"
+        },
+        {
+          "option": "No",
+          "price": 0.0,
+          "ui_component": "Box Without Image"
+        }
+      ],
+      "Bedroom Wardrobes": [
+        {
+          "option": "1x Unit",
+          "price": 2500.0,
+          "ui_component": "Box Without Image"
+        },
+        {
+          "option": "2x Units",
+          "price": 5000.0,
+          "ui_component": "Box Without Image"
+        },
+        {
+          "option": "No Bedroom Wardrobes",
+          "price": 0.0,
+          "ui_component": "Box Without Image"
+        }
+      ],
+      "Solar Options": [
+        {
+          "option": "4.95 kW Solar",
+          "price": 17883.7,
+          "ui_component": "Box Without Image"
+        },
+        {
+          "option": "No Solar",
+          "price": 0.0,
+          "ui_component": "Box Without Image"
+        }
+      ]
+    }
+  },
+  {
+    "model": "Compact Elegance",
+    "base_price": 133000.0,
+    "options": {
+      "Exterior Cladding": [
+        {
+          "option": "Corrugated Iron - Grey Friars",
+          "price": 0,
+          "ui_component": "Box With Image"
+        },
+        {
+          "option": "Corrugated Iron - Ebony",
+          "price": 0,
+          "ui_component": "Box With Image"
+        },
+        {
+          "option": "Corrugated Iron - Sandstone Grey",
+          "price": 0,
+          "ui_component": "Box With Image"
+        },
+        {
+          "option": "UniCote LUX - Printed Corten Red/Corrugated Iron - Ebony",
+          "price": 0,
+          "ui_component": "Box With Image"
+        }
+      ],
+      "Interior Lining": [
+        {
+          "option": "White Gib / Redline Ply Lounge Ceiling",
+          "price": 0,
+          "ui_component": "Box With Image"
+        },
+        {
+          "option": "White Gib / Blondline Ply Lounge Ceiling",
+          "price": 0,
+          "ui_component": "Box With Image"
+        },
+        {
+          "option": "Redline Ply Everywhere",
+          "price": 0,
+          "ui_component": "Box With Image"
+        },
+        {
+          "option": "Blondline Ply Everywhere",
+          "price": 0,
+          "ui_component": "Box With Image"
+        }
+      ],
+      "Flooring": [
+        {
+          "option": "Premium Hush - Smooth Oak High Noon",
+          "price": 6900.0,
+          "ui_component": "Box With Image"
+        },
+        {
+          "option": "Premium Hush - Turin Oak Slacked Oyster",
+          "price": 6900.0,
+          "ui_component": "Box With Image"
+        },
+        {
+          "option": "Premium Hush - Swiss Oak Burn",
+          "price": 6900.0,
+          "ui_component": "Box With Image"
+        },
+        {
+          "option": "None",
+          "price": 0.0,
+          "ui_component": "Box With Image"
+        }
+      ],
+      "Fireplace": [
+        {
+          "option": "Freestanding Wood Fire",
+          "price": 2198.32,
+          "ui_component": "Box Without Image"
+        },
+        {
+          "option": "No Fireplace",
+          "price": 0.0,
+          "ui_component": "Box Without Image"
+        }
+      ],
+      "Heatpump": [
+        {
+          "option": "Comfort Wall Mounted Heat Pump",
+          "price": 2601.99,
+          "ui_component": "Box Without Image"
+        },
+        {
+          "option": "No Heat Pump",
+          "price": 0.0,
+          "ui_component": "Box Without Image"
+        }
+      ],
+      "Water Heating": [
+        {
+          "option": "Infinity A24 External LPG",
+          "price": 2004.28,
+          "ui_component": "Box Without Image"
+        },
+        {
+          "option": "Ambipower Hot Water Heat Pump",
+          "price": 3799.14,
+          "ui_component": "Box Without Image"
+        },
+        {
+          "option": "No Water Heating",
+          "price": 0.0,
+          "ui_component": "Box Without Image"
+        }
+      ],
+      "Laundry Joinery": [
+        {
+          "option": "Yes",
+          "price": 4800.0,
+          "ui_component": "Box Without Image"
+        },
+        {
+          "option": "No",
+          "price": 0.0,
+          "ui_component": "Box Without Image"
+        }
+      ],
+      "Bedroom Wardrobes": [
+        {
+          "option": "1x Unit",
+          "price": 2500.0,
+          "ui_component": "Box Without Image"
+        },
+        {
+          "option": "No Bedroom Wardrobes",
+          "price": 0.0,
+          "ui_component": "Box Without Image"
+        }
+      ],
+      "Solar Options": [
+        {
+          "option": "4.05kW Solar",
+          "price": 16993.2,
+          "ui_component": "Box Without Image"
+        },
+        {
+          "option": "No Solar",
+          "price": 0.0,
+          "ui_component": "Box Without Image"
+        }
+      ]
+    }
+  },
+  {
+    "model": "Simplified Elegance",
+    "base_price": 145000.0,
+    "options": {
+      "Exterior Cladding": [
+        {
+          "option": "Corrugated Iron - Grey Friars",
+          "price": 0,
+          "ui_component": "Box With Image"
+        },
+        {
+          "option": "Corrugated Iron - Ebony",
+          "price": 0,
+          "ui_component": "Box With Image"
+        },
+        {
+          "option": "Corrugated Iron - Sandstone Grey",
+          "price": 0,
+          "ui_component": "Box With Image"
+        },
+        {
+          "option": "UniCote LUX - Printed Corten Red/Corrugated Iron - Ebony",
+          "price": 0,
+          "ui_component": "Box With Image"
+        }
+      ],
+      "Interior Lining": [
+        {
+          "option": "White Gib / Redline Ply Lounge Ceiling",
+          "price": 0.0,
+          "ui_component": "Box With Image"
+        },
+        {
+          "option": "White Gib / Blondline Ply Lounge Ceiling",
+          "price": 0.0,
+          "ui_component": "Box With Image"
+        },
+        {
+          "option": "Redline Ply Everywhere",
+          "price": 0.0,
+          "ui_component": "Box With Image"
+        },
+        {
+          "option": "Blondline Ply Everywhere",
+          "price": 0.0,
+          "ui_component": "Box With Image"
+        }
+      ],
+      "Flooring": [
+        {
+          "option": "Premium Hush - Smooth Oak High Noon",
+          "price": 8165.0,
+          "ui_component": "Box With Image"
+        },
+        {
+          "option": "Premium Hush - Turin Oak Slacked Oyster",
+          "price": 8165.0,
+          "ui_component": "Box With Image"
+        },
+        {
+          "option": "Premium Hush - Swiss Oak Burn",
+          "price": 0.0,
+          "ui_component": "Box With Image"
+        },
+        {
+          "option": "None",
+          "price": 0.0,
+          "ui_component": "Box With Image"
+        }
+      ],
+      "Fireplace": [
+        {
+          "option": "Freestanding Wood Fire",
+          "price": 2198.32,
+          "ui_component": "Box Without Image"
+        },
+        {
+          "option": "No Fireplace",
+          "price": 0.0,
+          "ui_component": "Box Without Image"
+        }
+      ],
+      "Heatpump": [
+        {
+          "option": "Comfort Wall Mounted Heat Pump",
+          "price": 2601.99,
+          "ui_component": "Box Without Image"
+        },
+        {
+          "option": "No Heat Pump",
+          "price": 0.0,
+          "ui_component": "Box Without Image"
+        }
+      ],
+      "Water Heating": [
+        {
+          "option": "Infinity A24 External LPG",
+          "price": 2004.28,
+          "ui_component": "Box Without Image"
+        },
+        {
+          "option": "Ambipower Hot Water Heat Pump",
+          "price": 3799.14,
+          "ui_component": "Box Without Image"
+        },
+        {
+          "option": "No Water Heating",
+          "price": 0.0,
+          "ui_component": "Box Without Image"
+        }
+      ],
+      "Laundry Joinery": [
+        {
+          "option": "Yes",
+          "price": 4800.0,
+          "ui_component": "Box Without Image"
+        },
+        {
+          "option": "No",
+          "price": 0.0,
+          "ui_component": "Box Without Image"
+        }
+      ],
+      "Bedroom Wardrobes": [
+        {
+          "option": "1x Unit",
+          "price": 2500.0,
+          "ui_component": "Box Without Image"
+        },
+        {
+          "option": "2x Units",
+          "price": 5000.0,
+          "ui_component": "Box Without Image"
+        },
+        {
+          "option": "No Bedroom Wardrobes",
+          "price": 0.0,
+          "ui_component": "Box Without Image"
+        }
+      ],
+      "Solar Options": [
+        {
+          "option": "4.95 kW Solar",
+          "price": 17883.7,
+          "ui_component": "Box Without Image"
+        },
+        {
+          "option": "No Solar",
+          "price": 0.0,
+          "ui_component": "Box Without Image"
+        }
+      ]
+    }
+  }
+]

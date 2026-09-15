@@ -1,0 +1,82 @@
+[
+  {
+    "group": "Exterior cladding",
+    "items": [
+      {
+        "item_name": "Corrugated Iron - Grey Friars",
+        "image_url": "https://static.wixstatic.com/media/15e926_4455882090fa4a55bd011926625279be~mv2.png"
+      },
+      {
+        "item_name": "Corrugated Iron - Ebony",
+        "image_url": "https://static.wixstatic.com/media/15e926_a69a5626c41142f8b9e0683c780e34f8~mv2.png"
+      },
+      {
+        "item_name": "Corrugated Iron - Sandstone Grey",
+        "image_url": "https://static.wixstatic.com/media/15e926_3b09187d0a92427a8dde93b3aaf2f67f~mv2.png"
+      },
+      {
+        "item_name": "UniCote LUX - Printed Corten Red/Corrugated Iron - Ebony",
+        "image_url": "https://static.wixstatic.com/media/15e926_21ef4563d3d048aeb03c838a8c6cd309~mv2.png"
+      }
+    ]
+  },
+  {
+    "group": "Interior lining",
+    "items": [
+      {
+        "item_name": "White Gib / Redline Ply Lounge Ceiling",
+        "image_url": "https://static.wixstatic.com/media/15e926_253532d87bfa4effb660819c4b510e8e~mv2.png"
+      },
+      {
+        "item_name": "White Gib / Blondline Ply Lounge Ceiling",
+        "image_url": "https://static.wixstatic.com/media/15e926_e469d6ec89d34e7690afbd851c51ac62~mv2.png"
+      },
+      {
+        "item_name": "Redline Ply Everywhere",
+        "image_url": "https://static.wixstatic.com/media/15e926_8c458edd530a44c08e64e875c3a6354e~mv2.png"
+      },
+      {
+        "item_name": "Blondline Ply Everywhere",
+        "image_url": "https://static.wixstatic.com/media/15e926_3e5b7867ab1d444490086128e178b786~mv2.png"
+      }
+    ]
+  },
+  {
+    "group": "Cabinets",
+    "items": [
+      {
+        "item_name": "Bullet",
+        "image_url": "https://static.wixstatic.com/media/15e926_df488902a9db4801ae6ad3dc5ad2ca29~mv2.png"
+      },
+      {
+        "item_name": "Green Slate",
+        "image_url": "https://static.wixstatic.com/media/15e926_3a2eea29e4b648b08a16754b122c5d0d~mv2.png"
+      },
+      {
+        "item_name": "White",
+        "image_url": "https://static.wixstatic.com/media/15e926_85ea25a04eb54e57a810f46070cac948~mv2.png"
+      }
+    ]
+  },
+  {
+    "group": "Flooring",
+    "items": [
+      {
+        "item_name": "None (choice id: none_flooring)",
+        "image_url": "https://static.wixstatic.com/media/15e926_a69a5626c41142f8b9e0683c780e34f8~mv2.png"
+      },
+      {
+        "item_name": "Premium Hush - Smooth Oak High Noon",
+        "image_url": "https://static.wixstatic.com/media/15e926_346bea30e3f74388a8488a7ac209fade~mv2.png"
+      },
+      {
+        "item_name": "Premium Hush - Turin Oak Slacked Oyster",
+        "image_url": "https://static.wixstatic.com/media/15e926_32ffef548dae45b3be8d7fd1065100ec~mv2.jpg"
+      },
+      {
+        "item_name": "Premium Hush - Swiss Oak Burn",
+        "image_url": "https://static.wixstatic.com/media/15e926_3ab07a1768e240d69874c2bec2781e82~mv2.jpg"
+      }
+    ]
+  }
+]

@@ -1,0 +1,2529 @@
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Configurator</title>
+
+  <!-- Slick CSS loads on first Interiors tab (ensureSlickCssThen). -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+
+  <style>
+    /* =====================================================
+       CONFIGURATOR STYLES — scoped under .configurator-root
+       ===================================================== */
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      font-family: "Poppins", sans-serif;
+      font-weight: 500;
+      background: #000;
+      color: #fff;
+    }
+
+    .configurator-root {
+      width: 100%;
+      height: 100%;
+      font-family: "Poppins", sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      color: #fff;
+      background: #000;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ---- Two-area layout ---- */
+
+    .configurator-layout {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Media area fills container (100% width/height) so viewer scales with layout. ConfiguratorUIUpdates §2. */
+    .media-area {
+      flex: 1 1 0%;
+      min-width: 0;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    /* Sidebar: bottom padding below accordion (ConfiguratorUIUpdates §8). */
+    .sidebar {
+      width: 22%;
+      min-width: 260px;
+      max-width: 340px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      border-left: 1px solid #333;
+      background: #000;
+      padding-bottom: 125px;
+    }
+
+    /* ---- Tablet & Mobile (≤1023px): single-column. Media fixed at top, sidebar scrolls in own container (ConfiguratorUIUpdates §7). ---- */
+
+    @media (max-width: 1023px) {
+      .configurator-root {
+        overflow: hidden;
+      }
+
+      .configurator-layout {
+        flex-direction: column;
+        height: 100%;
+        min-height: 0;
+      }
+
+      .media-area {
+        width: 100%;
+        height: 61vw;
+        min-height: 308px;
+        max-height: 462px;
+        flex: 0 0 auto;
+      }
+
+      .sidebar {
+        width: 100%;
+        min-width: 0;
+        max-width: none;
+        flex: 1 1 auto;
+        min-height: 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+        border-left: none;
+        border-top: 1px solid #333;
+        padding-bottom: 125px;
+      }
+    }
+
+    /* ---- Mobile (≤767px): media area height increased by ~15% over tablet baseline (RefactorBatch). ---- */
+
+    @media (max-width: 767px) {
+      .media-area {
+        height: 63.25vw;
+        min-height: 278px;
+        max-height: 455px;
+      }
+    }
+
+    /* =====================================================
+       PHASE 2: Sidebar accordion and option types
+       ===================================================== */
+
+    .accordion-item {
+      border-bottom: 1px solid #333;
+    }
+
+    .accordion-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: 18px 16px;
+      margin: 0;
+      border: none;
+      background: none;
+      cursor: pointer;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      color: #fff;
+      text-align: left;
+      outline: none;
+    }
+
+    .accordion-header-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2px;
+    }
+
+    .accordion-header:hover {
+      background: #000;
+    }
+
+    .accordion-header:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: -2px;
+    }
+
+    .accordion-icon {
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 1;
+      display: inline-block;
+      transition: transform 200ms ease;
+      flex-shrink: 0;
+      margin-left: 8px;
+    }
+
+    .accordion-item.open .accordion-icon {
+      transform: rotate(45deg);
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 250ms ease;
+    }
+
+    .accordion-item.open .accordion-content {
+      max-height: 2000px;
+    }
+
+    .accordion-content-inner {
+      padding: 14px 16px 14px;
+    }
+
+    /* ---- Sub-block: category groups inside accordion panels ---- */
+
+    .option-subblock {
+      margin-bottom: 16px;
+    }
+
+    .option-subblock:last-child {
+      margin-bottom: 0;
+    }
+
+    .option-subblock-heading {
+      font-size: 11px;
+      font-weight: 600;
+      color: #aaa;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+
+    .option-subblock-choices.option-subblock-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6px;
+    }
+
+    @media (max-width: 320px) {
+      .option-subblock-choices.option-subblock-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .option-subblock-choices.option-subblock-grid .option-box {
+      margin-bottom: 0;
+    }
+
+    /* ---- Option Type: box_with_image / box (square corners, reduced padding; variation images stay rounded). ---- */
+
+    .option-box {
+      display: flex;
+      align-items: center;
+      padding: 6px 8px;
+      margin-bottom: 6px;
+      border: 1px solid #444;
+      border-radius: 0;
+      cursor: pointer;
+      transition: border-color 150ms ease, background 150ms ease;
+      outline: none;
+    }
+
+    .option-box:hover {
+      border-color: #666;
+    }
+
+    .option-box:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 1px;
+    }
+
+    .option-box.selected {
+      border-color: #fff;
+      background: #000;
+    }
+
+    .option-box-image {
+      width: 44px;
+      height: 44px;
+      border-radius: 4px;
+      object-fit: cover;
+      margin-right: 10px;
+      flex-shrink: 0;
+    }
+
+    .option-box-text {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .option-box-label {
+      font-size: 12px;
+      font-weight: 500;
+      color: #fff;
+      line-height: 1.3;
+    }
+
+    .option-box-price {
+      font-size: 11px;
+      color: #aaa;
+      margin-top: 2px;
+    }
+
+    .option-box-note {
+      font-size: 10px;
+      color: #888;
+      margin-top: 4px;
+      line-height: 1.2;
+    }
+
+    /* ---- Laundry Joinery reference modal (full-screen overlay) ---- */
+
+    .laundry-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 16px;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 180ms ease, visibility 0ms linear 180ms;
+    }
+
+    .laundry-modal.is-open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transition: opacity 180ms ease, visibility 0ms linear 0ms;
+    }
+
+    .laundry-modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      cursor: pointer;
+    }
+
+    .laundry-modal-panel {
+      position: relative;
+      z-index: 1;
+      background: #000;
+      border-radius: 0;
+      max-width: min(920px, calc(100vw - 32px));
+      width: max-content;
+      overflow: hidden;
+      opacity: 0;
+      transform: scale(0.98);
+      transition: opacity 200ms ease-out, transform 200ms ease-out;
+    }
+
+    .laundry-modal.is-open .laundry-modal-panel {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .laundry-modal-inner {
+      position: relative;
+      padding: 0;
+      margin: 0;
+      line-height: 0;
+    }
+
+    .laundry-modal-inner img {
+      display: block;
+      max-width: 100%;
+      width: auto;
+      height: auto;
+      max-height: min(70vh, 720px);
+    }
+
+    .laundry-modal-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 2;
+      min-width: 40px;
+      min-height: 40px;
+      padding: 8px;
+      margin: 0;
+      border: none;
+      background: rgba(0, 0, 0, 0.9);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      border-radius: 0;
+    }
+
+    .laundry-modal-close:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 2px;
+    }
+
+    .laundry-modal-close svg {
+      display: block;
+    }
+
+    /* =====================================================
+       PHASE 3: Media panels, pill tabs, pricing overlay
+       ===================================================== */
+
+    .media-panel {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      min-width: 0;
+      min-height: 0;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .media-panel.panel-active {
+      display: flex;
+    }
+
+    .media-panel-placeholder {
+      font-size: 13px;
+      color: #888;
+    }
+
+    .floorplan-image {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      display: none;
+    }
+
+    .floorplan-image.loaded {
+      display: block;
+    }
+
+    @media (max-width: 1023px) {
+      #panel-floorplan.panel-active {
+        align-items: flex-start;
+        padding-bottom: 80px;
+        box-sizing: border-box;
+      }
+    }
+
+    .media-overlay {
+      position: absolute;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      pointer-events: none;
+    }
+
+    .media-tabs {
+      display: flex;
+      gap: 3px;
+      background: #000;
+      border-radius: 0;
+      padding: 3px;
+      pointer-events: auto;
+    }
+
+    .media-tab {
+      padding: 6px 14px;
+      border-radius: 0;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      font: inherit;
+      font-size: 11px;
+      font-weight: 500;
+      color: #aaa;
+      white-space: nowrap;
+      transition: background 150ms ease, color 150ms ease;
+      outline: none;
+    }
+
+    .media-tab:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+    }
+
+    .media-tab:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 1px;
+    }
+
+    .media-tab.tab-active {
+      background: #fff;
+      color: #000;
+    }
+
+    .pricing-display {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      background: #000;
+      border-radius: 0;
+      padding: 8px 14px;
+      pointer-events: auto;
+      font-size: 13px;
+      font-weight: 600;
+      color: #fff;
+      white-space: nowrap;
+    }
+
+    .pricing-display-link {
+      font-size: 11px;
+      font-weight: 500;
+      color: #ccc;
+      text-decoration: none;
+    }
+
+    .pricing-display-link:hover {
+      text-decoration: underline;
+      color: #fff;
+    }
+
+    @media (max-width: 767px) {
+      .media-overlay {
+        bottom: 10px;
+      }
+      .media-tab {
+        padding: 5px 10px;
+        font-size: 10px;
+      }
+      .pricing-display {
+        font-size: 12px;
+        padding: 12px 10px;
+      }
+      .pricing-display-link {
+        display: none;
+      }
+    }
+
+    /* ---- AR button: floats top-right of media area, visible only on 3D tab when Plattar ready ---- */
+
+    .ar-button {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 100;
+      width: 62px;
+      height: 62px;
+      padding: 11px;
+      box-sizing: border-box;
+      border: none;
+      border-radius: 50%;
+      background-color: #333333;
+      background-image: var(--ar-icon-url);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 50%;
+      cursor: pointer;
+      transition: background-color 150ms ease;
+    }
+
+    .ar-button.launcher-active {
+      background-image: var(--ar-close-icon-url);
+    }
+
+    .ar-button:hover {
+      background-color: #444444;
+    }
+
+    .ar-button:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 2px;
+    }
+
+    @media (max-width: 767px) {
+      .ar-button {
+        width: 53px;
+        height: 53px;
+        top: 10px;
+        right: 10px;
+        padding: 8px;
+      }
+    }
+
+    /* =====================================================
+       PHASE 5: 3D panel loading, error, embed
+       ===================================================== */
+
+    /* 3D panel: full-size container so plattar-embed and its shadow DOM can fill the media area. */
+    #panel-3d {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    #panel-3d plattar-embed {
+      width: 100%;
+      height: 100%;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+
+    .panel-3d-loading {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: #000;
+      z-index: 5;
+    }
+
+    .panel-3d-loading span {
+      font-size: 13px;
+      color: #aaa;
+    }
+
+    .loading-spinner {
+      width: 28px;
+      height: 28px;
+      border: 3px solid #333;
+      border-top-color: #888;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .media-error-box {
+      max-width: 320px;
+      padding: 20px 24px;
+      background: #000;
+      border-radius: 0;
+      text-align: center;
+      font-size: 13px;
+      color: #ccc;
+      line-height: 1.5;
+      border: 1px solid #333;
+    }
+
+    /* =====================================================
+       PHASE 6: Interior slider (Slick)
+       ===================================================== */
+
+    #panel-interiors.panel-active {
+      align-items: stretch;
+    }
+
+    .interior-slider-wrap {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .interior-slider-wrap .slick-slider,
+    .interior-slider-wrap .slick-list,
+    .interior-slider-wrap .slick-track,
+    .interior-slider-wrap .slick-slide,
+    .interior-slider-wrap .slick-slide > div {
+      height: 100%;
+    }
+
+    .interior-slide {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .interior-slide-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .interior-slide-loading {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #000;
+      z-index: 2;
+    }
+
+    .interior-slider-wrap .slick-prev,
+    .interior-slider-wrap .slick-next {
+      z-index: 5;
+      width: 48px;
+      height: 48px;
+      padding: 10px;
+      box-sizing: border-box;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 0;
+      line-height: 0;
+      color: transparent;
+    }
+
+    .interior-slider-wrap .slick-prev::before,
+    .interior-slider-wrap .slick-next::before {
+      content: none;
+    }
+
+    .interior-slider-wrap .slick-prev {
+      left: 12px;
+      background-image: url('https://static.wixstatic.com/shapes/15e926_4bd7b7ff336e41208779e9aec3217bcd.svg');
+    }
+
+    .interior-slider-wrap .slick-next {
+      right: 12px;
+      background-image: url('https://static.wixstatic.com/shapes/15e926_9df38e8ca04d4654921baebc3dca0476.svg');
+    }
+
+    @media (max-width: 767px) {
+      .interior-slider-wrap .slick-prev,
+      .interior-slider-wrap .slick-next {
+        width: 40px;
+        height: 40px;
+        padding: 8px;
+      }
+
+      .interior-slider-wrap .slick-prev {
+        left: 6px;
+      }
+
+      .interior-slider-wrap .slick-next {
+        right: 6px;
+      }
+    }
+  </style>
+
+<body>
+
+  <div class="configurator-root">
+    <div class="configurator-layout">
+
+      <!-- Media Area (left on desktop, top on mobile) -->
+      <div class="media-area" id="media-area">
+        <div class="media-panel panel-active" id="panel-3d" role="tabpanel">
+          <span class="media-panel-placeholder">3D Exterior — loading</span>
+        </div>
+        <div class="media-panel" id="panel-interiors" role="tabpanel">
+          <span class="media-panel-placeholder">Interiors — loading</span>
+        </div>
+        <div class="media-panel" id="panel-floorplan" role="tabpanel">
+          <span class="media-panel-placeholder">Floorplan — loading</span>
+          <img id="floorplan-image" class="floorplan-image" alt="Floor plan" src="" />
+        </div>
+
+        <button id="ar-button" class="ar-button" style="display:none;" aria-label="View in AR" title="View in AR"></button>
+
+        <div class="media-overlay">
+          <div class="media-tabs" id="media-tabs" role="tablist">
+            <button class="media-tab tab-active" data-tab="3d" role="tab" aria-selected="true" tabindex="0">3D Exterior</button>
+            <button class="media-tab" data-tab="interiors" role="tab" aria-selected="false" tabindex="0">Interiors</button>
+            <button class="media-tab" data-tab="floorplan" role="tab" aria-selected="false" tabindex="0">Floorplan</button>
+          </div>
+          <div class="pricing-display" id="pricing-display">
+            <span id="pricing-display-text">From $135,000 incl. GST</span>
+            <a id="pricing-kit-guide-link" class="pricing-display-link" href="https://www.seventysquares.co.nz/complete-kit-guide" target="_blank" rel="noopener noreferrer">Go to Kit Guide</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar (right on desktop, below on mobile) -->
+      <div class="sidebar" id="sidebar"></div>
+
+    </div>
+
+    <div id="laundry-joinery-modal" class="laundry-modal" aria-hidden="true">
+      <div class="laundry-modal-backdrop" aria-hidden="true"></div>
+      <div class="laundry-modal-panel" role="dialog" aria-modal="true" aria-label="Laundry joinery reference">
+        <div class="laundry-modal-inner">
+          <img id="laundry-joinery-modal-image" src="" alt="Laundry joinery reference image" />
+          <button type="button" class="laundry-modal-close" aria-label="Close">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M18 6L6 18M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       THIRD-PARTY CDN SCRIPTS (Wix CSP: only these external scripts)
+       ===================================================== -->
+
+  <!-- jQuery, Slick JS, and Plattar SDK load on demand (whenJQuery / whenSlick / whenPlattarSdk) to reduce mobile cold-load in Wix embeds. Same CDN URLs; Slick CSS remains above. -->
+  <script>
+    window.__slickLoaded = false;
+  </script>
+
+  <script>
+    (function () {
+      'use strict';
+
+      // =======================================================
+      // CONFIGURATION DATA
+      // =======================================================
+
+      // --- Model content: single source of truth. Workflow: (1) Edit Model Content Data/Compact Harmony/MODEL_CONTENT_COMPACT_HARMONY.json. (2) Copy its contents. (3) Paste here, replacing the object below. No dynamic loading. See Cursor Docs/MODEL_CONTENT_README.MD. ---
+      var MODEL_CONTENT = {
+  "metadata": {
+    "modelName": "Compact Harmony",
+    "postMessageType": "configurator-config"
+  },
+  "pricing": {
+    "product": {
+      "name": "Compact Harmony",
+      "basePrice": 135000,
+      "currency": "NZD"
+    },
+    "sidebarGroups": [
+      {
+        "id": "exterior",
+        "title": "Exterior",
+        "categories": [
+          "Exterior Cladding"
+        ]
+      },
+      {
+        "id": "interior_finishes",
+        "title": "Interior Finishes",
+        "categories": [
+          "Interior Lining",
+          "Flooring",
+          "Cabinets"
+        ]
+      },
+      {
+        "id": "storage_joinery",
+        "title": "Storage & Joinery",
+        "categories": [
+          "Laundry Joinery",
+          "Bedroom Wardrobe"
+        ]
+      },
+      {
+        "id": "comfort_energy",
+        "title": "Comfort & Energy",
+        "categories": [
+          "Fireplace",
+          "Heatpump",
+          "Water Heating",
+          "Solar"
+        ]
+      }
+    ],
+    "options": [
+      {
+        "category": "Exterior Cladding",
+        "type": "single_select",
+        "display": "box_with_image",
+        "choices": [
+          {
+            "id": "corrugated_iron_grey_friars",
+            "label": "Corrugated Iron - Grey Friars",
+            "price": 0
+          },
+          {
+            "id": "corrugated_iron_ebony",
+            "label": "Corrugated Iron - Ebony",
+            "price": 0
+          },
+          {
+            "id": "corrugated_iron_sandstone_grey",
+            "label": "Corrugated Iron - Sandstone Grey",
+            "price": 0
+          },
+          {
+            "id": "seemlok_printed_corten_steel_corrugated_iron_ebony",
+            "label": "UniCote LUX - Printed Corten Red/Corrugated Iron - Ebony",
+            "price": 0
+          }
+        ]
+      },
+      {
+        "category": "Interior Lining",
+        "type": "single_select",
+        "display": "box_with_image",
+        "choices": [
+          {
+            "id": "white_gib_redline_ply_lounge_ceiling",
+            "label": "White Gib / Redline Ply Lounge Ceiling",
+            "price": 0
+          },
+          {
+            "id": "white_gib_blondline_ply_lounge_ceiling",
+            "label": "White Gib / Blondline Ply Lounge Ceiling",
+            "price": 0
+          },
+          {
+            "id": "redline_ply_everywhere",
+            "label": "Redline Ply Everywhere",
+            "price": 0
+          },
+          {
+            "id": "blondline_ply_everywhere",
+            "label": "Blondline Ply Everywhere",
+            "price": 0
+          }
+        ]
+      },
+      {
+        "category": "Flooring",
+        "type": "single_select",
+        "display": "box_with_image",
+        "choices": [
+          {
+            "id": "none_flooring",
+            "label": "Owner Supplied Flooring",
+            "price": 0
+          },
+          {
+            "id": "smooth_oak_high_noon",
+            "label": "Premium Hush - Smooth Oak High Noon",
+            "price": 6500
+          },
+          {
+            "id": "turin_oak_slacked_oyster",
+            "label": "Premium Hush - Turin Oak Slacked Oyster",
+            "price": 6500
+          },
+          {
+            "id": "swiss_oak_burn",
+            "label": "Premium Hush - Swiss Oak Burn",
+            "price": 6500
+          }
+        ]
+      },
+      {
+        "category": "Cabinets",
+        "type": "single_select",
+        "display": "box_with_image",
+        "choices": [
+          {
+            "id": "cabinets_bullet",
+            "label": "Bullet",
+            "price": 0,
+            "image": "https://static.wixstatic.com/media/15e926_6feced8eb065485d97537a3f96dd5437~mv2.jpg"
+          },
+          {
+            "id": "cabinets_green_slate",
+            "label": "Green Slate",
+            "price": 0,
+            "image": "https://static.wixstatic.com/media/15e926_6feced8eb065485d97537a3f96dd5437~mv2.jpg"
+          },
+          {
+            "id": "cabinets_white",
+            "label": "White",
+            "price": 0,
+            "image": "https://static.wixstatic.com/media/15e926_6feced8eb065485d97537a3f96dd5437~mv2.jpg"
+          }
+        ]
+      },
+      {
+        "category": "Fireplace",
+        "type": "single_select",
+        "display": "box",
+        "choices": [
+          {
+            "id": "none_fireplace",
+            "label": "No Fireplace",
+            "price": 0
+          },
+          {
+            "id": "fireplace_added",
+            "label": "Freestanding Wood Fire",
+            "price": 2198.32
+          }
+        ]
+      },
+      {
+        "category": "Heatpump",
+        "type": "single_select",
+        "display": "box",
+        "choices": [
+          {
+            "id": "none_heatpump",
+            "label": "No Heat Pump",
+            "price": 0
+          },
+          {
+            "id": "heatpump_added",
+            "label": "Comfort Wall Mounted Heat Pump",
+            "price": 2601.99
+          }
+        ]
+      },
+      {
+        "category": "Water Heating",
+        "type": "single_select",
+        "display": "box",
+        "choices": [
+          {
+            "id": "no_water_heating",
+            "label": "No Water Heating",
+            "price": 0
+          },
+          {
+            "id": "gas_kelifont",
+            "label": "Infinity A24 External LPG",
+            "price": 2004.28
+          },
+          {
+            "id": "electric_cylinder",
+            "label": "Ambipower Hot Water Heat Pump",
+            "price": 3799.14
+          }
+        ]
+      },
+      {
+        "category": "Laundry Joinery",
+        "type": "single_select",
+        "display": "box",
+        "choices": [
+          {
+            "id": "none_laundry",
+            "label": "No Laundry Joinery",
+            "price": 0
+          },
+          {
+            "id": "1_laundry_joinery",
+            "label": "Laundry Joinery Included",
+            "price": 4500
+          }
+        ]
+      },
+      {
+        "category": "Bedroom Wardrobe",
+        "type": "single_select",
+        "display": "box",
+        "choices": [
+          {
+            "id": "none_bedroom_wardrobe",
+            "label": "No Bedroom Wardrobes",
+            "price": 0
+          },
+          {
+            "id": "bedroom_wardrobe_1x",
+            "label": "1x Bedroom Wardrobe",
+            "price": 2500
+          }
+        ]
+      },
+      {
+        "category": "Solar",
+        "type": "single_select",
+        "display": "box",
+        "choices": [
+          {
+            "id": "none_solar",
+            "label": "No Solar",
+            "price": 0
+          },
+          {
+            "id": "solar_added",
+            "label": "6.75 kW Solar",
+            "price": 23267.7
+          }
+        ]
+      }
+    ]
+  },
+  "plattar": {
+    "sceneId": "329bc7fb-6c6b-49b8-a4d2-70411e58e9a4",
+    "idRegistry": {
+      "scenes": [
+        {
+          "title": "Compact Harmony",
+          "anchor": "horizontal",
+          "id": "329bc7fb-6c6b-49b8-a4d2-70411e58e9a4",
+          "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4",
+          "configuratorUrl": "https://app.plattar.com/configurator/dist/index.html?sceneId=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4",
+          "sceneproducts": [
+            {
+              "instanceId": "1df22012-2566-4c4f-8e70-45919fe69145",
+              "instanceTitle": "Compact Harmony Interior",
+              "product": {
+                "id": "8c6c67bf-c76b-41f1-ac5d-b07b7c5be424",
+                "title": "Compact Harmony Interior",
+                "sku": null
+              },
+              "variations": [
+                {
+                  "id": "d8247ddd-3195-425a-aec2-0cad6446b98e",
+                  "title": "Interior",
+                  "sku": null,
+                  "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=d8247ddd-3195-425a-aec2-0cad6446b98e",
+                  "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=d8247ddd-3195-425a-aec2-0cad6446b98e"
+                }
+              ]
+            },
+            {
+              "instanceId": "3aaf8422-7559-4bea-87f5-cdb5c1dc3670",
+              "instanceTitle": "Compact Harmony Heating",
+              "product": {
+                "id": "a7f16269-345c-436e-8de4-120a04f32a85",
+                "title": "Compact Harmony Heating",
+                "sku": null
+              },
+              "variations": [
+                {
+                  "id": "13a371a5-be8a-4bf2-b439-436ddc931e62",
+                  "title": "Heatpump",
+                  "sku": null,
+                  "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=13a371a5-be8a-4bf2-b439-436ddc931e62",
+                  "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=13a371a5-be8a-4bf2-b439-436ddc931e62"
+                },
+                {
+                  "id": "19f00272-4a4e-4feb-aa9d-cb311b6339e3",
+                  "title": "None",
+                  "sku": null,
+                  "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=19f00272-4a4e-4feb-aa9d-cb311b6339e3",
+                  "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=19f00272-4a4e-4feb-aa9d-cb311b6339e3"
+                },
+                {
+                  "id": "f1c36add-4643-4143-a00a-a9c95989bc87",
+                  "title": "Fire + Heatpump",
+                  "sku": null,
+                  "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=f1c36add-4643-4143-a00a-a9c95989bc87",
+                  "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=f1c36add-4643-4143-a00a-a9c95989bc87"
+                },
+                {
+                  "id": "fef0fc85-4f40-4365-8434-0fa4adeffe50",
+                  "title": "Fireplace",
+                  "sku": null,
+                  "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=fef0fc85-4f40-4365-8434-0fa4adeffe50",
+                  "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=fef0fc85-4f40-4365-8434-0fa4adeffe50"
+                }
+              ]
+            },
+            {
+              "instanceId": "72fbb916-7aa1-493a-929d-256129109485",
+              "instanceTitle": "Compact Harmony Hotwater",
+              "product": {
+                "id": "b1a3d668-a709-4608-94d2-6cec5ddf52e5",
+                "title": "Compact Harmony Hotwater",
+                "sku": null
+              },
+              "variations": [
+                {
+                  "id": "ac662300-f395-4651-bda9-cf6c5107c30d",
+                  "title": "None",
+                  "sku": null,
+                  "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=ac662300-f395-4651-bda9-cf6c5107c30d",
+                  "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=ac662300-f395-4651-bda9-cf6c5107c30d"
+                },
+                {
+                  "id": "b825cda9-7151-4f96-8928-ed8303642410",
+                  "title": "Hot Water",
+                  "sku": null,
+                  "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=b825cda9-7151-4f96-8928-ed8303642410",
+                  "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=b825cda9-7151-4f96-8928-ed8303642410"
+                },
+                {
+                  "id": "ec702fcf-d378-40df-93e5-c2c83aa49be8",
+                  "title": "Gas Infinity",
+                  "sku": null,
+                  "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=ec702fcf-d378-40df-93e5-c2c83aa49be8",
+                  "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=ec702fcf-d378-40df-93e5-c2c83aa49be8"
+                }
+              ]
+            },
+            {
+              "instanceId": "7d352cfb-9737-4b5b-8d5d-d8c77d76957a",
+              "instanceTitle": "Compact Harmony Exterior",
+              "product": {
+                "id": "8d859a25-0e4c-4ea8-a207-934544ff3598",
+                "title": "Compact Harmony Exterior",
+                "sku": null
+              },
+              "variations": [
+                {
+                  "id": "16211948-2c48-46cc-9dfa-6f71bb3c1b0c",
+                  "title": "Sandstone",
+                  "sku": null,
+                  "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=16211948-2c48-46cc-9dfa-6f71bb3c1b0c",
+                  "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=16211948-2c48-46cc-9dfa-6f71bb3c1b0c"
+                },
+                {
+                  "id": "2ff8f6f0-86c7-4703-8f89-f6bf748c742c",
+                  "title": "Corten",
+                  "sku": null,
+                  "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=2ff8f6f0-86c7-4703-8f89-f6bf748c742c",
+                  "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=2ff8f6f0-86c7-4703-8f89-f6bf748c742c"
+                },
+                {
+                  "id": "3c0b6103-9f7b-42da-8057-ee0b1197b0fe",
+                  "title": "Ebony",
+                  "sku": null,
+                  "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=3c0b6103-9f7b-42da-8057-ee0b1197b0fe",
+                  "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=3c0b6103-9f7b-42da-8057-ee0b1197b0fe"
+                },
+                {
+                  "id": "4b28382f-e3de-4127-8466-5ad45ca5d4a8",
+                  "title": "Grey Friars",
+                  "sku": null,
+                  "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=4b28382f-e3de-4127-8466-5ad45ca5d4a8",
+                  "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=4b28382f-e3de-4127-8466-5ad45ca5d4a8"
+                }
+              ]
+            },
+            {
+              "instanceId": "c37faaa0-9f42-457f-b17d-62bf09be8b28",
+              "instanceTitle": "Compact Harmony Solar",
+              "product": {
+                "id": "91711204-2e08-46b6-8785-ae39b92d29b1",
+                "title": "Compact Harmony Solar",
+                "sku": null
+              },
+              "variations": [
+                {
+                  "id": "0bbd704d-4889-4ac7-9c72-27b2ec8a274b",
+                  "title": "None",
+                  "sku": null,
+                  "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=0bbd704d-4889-4ac7-9c72-27b2ec8a274b",
+                  "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=0bbd704d-4889-4ac7-9c72-27b2ec8a274b"
+                },
+                {
+                  "id": "ad83addb-d67e-4599-a98e-94f2fb1947b4",
+                  "title": "Solar",
+                  "sku": null,
+                  "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=ad83addb-d67e-4599-a98e-94f2fb1947b4",
+                  "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=ad83addb-d67e-4599-a98e-94f2fb1947b4"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "products": []
+    },
+    "exteriorVariationMap": {
+      "corrugated_iron_grey_friars": "4b28382f-e3de-4127-8466-5ad45ca5d4a8",
+      "corrugated_iron_ebony": "3c0b6103-9f7b-42da-8057-ee0b1197b0fe",
+      "corrugated_iron_sandstone_grey": "16211948-2c48-46cc-9dfa-6f71bb3c1b0c",
+      "seemlok_printed_corten_steel_corrugated_iron_ebony": "2ff8f6f0-86c7-4703-8f89-f6bf748c742c"
+    },
+    "addOnVariationMap": {
+      "heating": {
+        "heatpump": "13a371a5-be8a-4bf2-b439-436ddc931e62",
+        "none": "19f00272-4a4e-4feb-aa9d-cb311b6339e3",
+        "firePlusHeatpump": "f1c36add-4643-4143-a00a-a9c95989bc87",
+        "fireplace": "fef0fc85-4f40-4365-8434-0fa4adeffe50"
+      },
+      "solar": {
+        "none": "0bbd704d-4889-4ac7-9c72-27b2ec8a274b",
+        "solar": "ad83addb-d67e-4599-a98e-94f2fb1947b4"
+      },
+      "hotwater": {
+        "none": "ac662300-f395-4651-bda9-cf6c5107c30d",
+        "hotWater": "b825cda9-7151-4f96-8928-ed8303642410",
+        "gasInfinity": "ec702fcf-d378-40df-93e5-c2c83aa49be8"
+      }
+    }
+  },
+  "images": {
+    "interior": {
+      "living": {
+        "base": "https://static.wixstatic.com/media/15e926_cd660897bfee4050b1feaca2642dc79f~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Gib_Ceiling-Birch_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_cd660897bfee4050b1feaca2642dc79f~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Gib_Ceiling-Birch_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_7b2cb88e39c94db1b1504ea866e8f39d~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Gib_Ceiling-Birch_Cabinets-White": "https://static.wixstatic.com/media/15e926_38f747540f874b7ebc88b5964ddb1800~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Gib_Ceiling-Redline_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_354e41ead75144c1916aef9173b49cea~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Gib_Ceiling-Redline_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_85c3cc77bb4a40f59af7083ec75dcfe0~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Gib_Ceiling-Redline_Cabinets-White": "https://static.wixstatic.com/media/15e926_b4787acc85504e439e4792f57ac9c2c2~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Birch_Ceiling-Birch_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_a86f6b315b6a4dcca725eed1faa69f6e~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Birch_Ceiling-Birch_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_1b47645e209b4a5ca358520461008a35~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Birch_Ceiling-Birch_Cabinets-White": "https://static.wixstatic.com/media/15e926_9e7b634a621b418999e3ff1525998037~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Redline_Ceiling-Redline_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_f6b276c3c9b0410d8052e7bea6400120~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Redline_Ceiling-Redline_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_a7f14de5a36f4c05b2c59e12a75b3cf4~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Redline_Ceiling-Redline_Cabinets-White": "https://static.wixstatic.com/media/15e926_623de2d9595d4d2583dfb6ef7e403c1d~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Gib_Ceiling-Birch_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_fc05b2e349594cf7a68eed9758c637da~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Gib_Ceiling-Birch_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_d3a5510f2b8446c4b9d565d0ab5c6e20~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Gib_Ceiling-Birch_Cabinets-White": "https://static.wixstatic.com/media/15e926_96e46cccfdee4c88bb7fa493a8a6b76c~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Gib_Ceiling-Redline_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_73e410f58d0f4550954b90c0572ee2e9~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Gib_Ceiling-Redline_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_1c3be03162b645669706e18db483ddf1~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Gib_Ceiling-Redline_Cabinets-White": "https://static.wixstatic.com/media/15e926_428ff2e5faa2416ab10e698d9b2f4af9~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Birch_Ceiling-Birch_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_09b7342a78fe4201aee2f2f2fb3f4c88~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Birch_Ceiling-Birch_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_0ea185ea6c5443e88fec06260f94c503~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Birch_Ceiling-Birch_Cabinets-White": "https://static.wixstatic.com/media/15e926_77b1804cf7ab42f184479d057fd60e09~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Redline_Ceiling-Redline_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_010dfeed5dbc46e1bbdcba5c63301618~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Redline_Ceiling-Redline_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_60e107e8a3664b12bcf6eaecfc2e6498~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Redline_Ceiling-Redline_Cabinets-White": "https://static.wixstatic.com/media/15e926_6ee59b1d24de4bd3834966b5e2b2a53f~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Gib_Ceiling-Birch_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_965f693dbfe541809332d6eccfd9c121~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Gib_Ceiling-Birch_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_1a229b3ca5974b49867bacdf534b590f~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Gib_Ceiling-Birch_Cabinets-White": "https://static.wixstatic.com/media/15e926_8125cc23907f4f028fa12a308c94be3d~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Gib_Ceiling-Redline_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_427a71cb7e324b8bb766b9d421ada3ff~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Gib_Ceiling-Redline_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_a01d689c34484bd1a6dbfeb033b7a035~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Gib_Ceiling-Redline_Cabinets-White": "https://static.wixstatic.com/media/15e926_5ab3c52c57574065b82b33e6eab51b18~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Birch_Ceiling-Birch_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_f582e9f8af54448d8437b8ff9170523b~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Birch_Ceiling-Birch_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_74123b6d8bff4f969dd5b8eabdbda0ba~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Birch_Ceiling-Birch_Cabinets-White": "https://static.wixstatic.com/media/15e926_09f0d28c8df64840b8fa4859982a5535~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Redline_Ceiling-Redline_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_5ee0f7a578e04bbd923c95d1e4316b0f~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Redline_Ceiling-Redline_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_eb44c4be7ffa41a39ada5c2667ad7e59~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Redline_Ceiling-Redline_Cabinets-White": "https://static.wixstatic.com/media/15e926_7fb1fcadddbd4095867706fb2822bcdc~mv2.jpg"
+      },
+      "bathroom": {
+        "base": "https://static.wixstatic.com/media/15e926_fc0c7167a3e04b398479932eb8b37674~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Gib_Ceiling-Birch_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_fc0c7167a3e04b398479932eb8b37674~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Gib_Ceiling-Birch_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_4116c42f56644d108c4024aa29e7a166~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Gib_Ceiling-Birch_Cabinets-White": "https://static.wixstatic.com/media/15e926_5bc8b1e63107411099da2522ab4d4f13~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Gib_Ceiling-Redline_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_fc0c7167a3e04b398479932eb8b37674~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Gib_Ceiling-Redline_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_4116c42f56644d108c4024aa29e7a166~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Gib_Ceiling-Redline_Cabinets-White": "https://static.wixstatic.com/media/15e926_5bc8b1e63107411099da2522ab4d4f13~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Birch_Ceiling-Birch_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_000b688226b7460cac2fbc98ea964985~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Birch_Ceiling-Birch_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_48194061d4724e508cb161cd587fec9d~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Birch_Ceiling-Birch_Cabinets-White": "https://static.wixstatic.com/media/15e926_6c544f13795644e894c9c05fe33b9c32~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Redline_Ceiling-Redline_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_5ef56952d1d44eedb44b18cd53775459~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Redline_Ceiling-Redline_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_95f01242a52c4913a98dd9d51be5bfe7~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Redline_Ceiling-Redline_Cabinets-White": "https://static.wixstatic.com/media/15e926_eae8393548e543cdbe1ee3dcc8265d0d~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Gib_Ceiling-Birch_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_e86c1097b42846618bcab9913ad0ba9e~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Gib_Ceiling-Birch_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_d53da281f3bb4aa79450c85774aebd22~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Gib_Ceiling-Birch_Cabinets-White": "https://static.wixstatic.com/media/15e926_29586c842a5247b9b1799fb5bc8958e0~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Gib_Ceiling-Redline_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_e86c1097b42846618bcab9913ad0ba9e~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Gib_Ceiling-Redline_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_d53da281f3bb4aa79450c85774aebd22~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Gib_Ceiling-Redline_Cabinets-White": "https://static.wixstatic.com/media/15e926_29586c842a5247b9b1799fb5bc8958e0~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Birch_Ceiling-Birch_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_0ca8d69384f146f88d07c862ccaa9a2c~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Birch_Ceiling-Birch_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_48194061d4724e508cb161cd587fec9d~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Birch_Ceiling-Birch_Cabinets-White": "https://static.wixstatic.com/media/15e926_6c544f13795644e894c9c05fe33b9c32~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Redline_Ceiling-Redline_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_da1dd4cf17e9433f80ea5b865868cdbf~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Redline_Ceiling-Redline_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_d11621539aaf4f0d92d511bda8156d6b~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Redline_Ceiling-Redline_Cabinets-White": "https://static.wixstatic.com/media/15e926_88f4290a888b445898e602da026ad4da~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Gib_Ceiling-Birch_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_f8a7421001f44d5e86f8c603c328f25a~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Gib_Ceiling-Birch_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_4bf4ff5e071248dc85c1c20d8ab8cdbd~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Gib_Ceiling-Birch_Cabinets-White": "https://static.wixstatic.com/media/15e926_3a85365d0c2c4d308fc7077c995982d5~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Gib_Ceiling-Redline_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_f8a7421001f44d5e86f8c603c328f25a~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Gib_Ceiling-Redline_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_4bf4ff5e071248dc85c1c20d8ab8cdbd~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Gib_Ceiling-Redline_Cabinets-White": "https://static.wixstatic.com/media/15e926_3a85365d0c2c4d308fc7077c995982d5~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Birch_Ceiling-Birch_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_173972e529e442eb998a4e00f8287bfc~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Birch_Ceiling-Birch_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_48194061d4724e508cb161cd587fec9d~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Birch_Ceiling-Birch_Cabinets-White": "https://static.wixstatic.com/media/15e926_6c544f13795644e894c9c05fe33b9c32~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Redline_Ceiling-Redline_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_8512e867d6ae4763a15a1ee55748e366~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Redline_Ceiling-Redline_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_04e8b9b6665b4011b35d900314fec481~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Redline_Ceiling-Redline_Cabinets-White": "https://static.wixstatic.com/media/15e926_5519a930fc444218b67ac1e82b1aac08~mv2.jpg"
+      }
+    },
+    "variationOptions": {
+      "corrugated_iron_grey_friars": "https://static.wixstatic.com/media/15e926_4455882090fa4a55bd011926625279be~mv2.png",
+      "corrugated_iron_ebony": "https://static.wixstatic.com/media/15e926_a69a5626c41142f8b9e0683c780e34f8~mv2.png",
+      "corrugated_iron_sandstone_grey": "https://static.wixstatic.com/media/15e926_3b09187d0a92427a8dde93b3aaf2f67f~mv2.png",
+      "seemlok_printed_corten_steel_corrugated_iron_ebony": "https://static.wixstatic.com/media/15e926_21ef4563d3d048aeb03c838a8c6cd309~mv2.png",
+      "white_gib_redline_ply_lounge_ceiling": "https://static.wixstatic.com/media/15e926_253532d87bfa4effb660819c4b510e8e~mv2.png",
+      "white_gib_blondline_ply_lounge_ceiling": "https://static.wixstatic.com/media/15e926_e469d6ec89d34e7690afbd851c51ac62~mv2.png",
+      "redline_ply_everywhere": "https://static.wixstatic.com/media/15e926_8c458edd530a44c08e64e875c3a6354e~mv2.png",
+      "blondline_ply_everywhere": "https://static.wixstatic.com/media/15e926_3e5b7867ab1d444490086128e178b786~mv2.png",
+      "smooth_oak_high_noon": "https://static.wixstatic.com/media/15e926_346bea30e3f74388a8488a7ac209fade~mv2.png",
+      "turin_oak_slacked_oyster": "https://static.wixstatic.com/media/15e926_32ffef548dae45b3be8d7fd1065100ec~mv2.jpg",
+      "swiss_oak_burn": "https://static.wixstatic.com/media/15e926_3ab07a1768e240d69874c2bec2781e82~mv2.jpg",
+      "cabinets_bullet": "https://static.wixstatic.com/media/15e926_df488902a9db4801ae6ad3dc5ad2ca29~mv2.png",
+      "cabinets_green_slate": "https://static.wixstatic.com/media/15e926_3a2eea29e4b648b08a16754b122c5d0d~mv2.png",
+      "cabinets_white": "https://static.wixstatic.com/media/15e926_85ea25a04eb54e57a810f46070cac948~mv2.png",
+      "none_flooring": "https://static.wixstatic.com/media/15e926_a69a5626c41142f8b9e0683c780e34f8~mv2.png"
+    },
+    "floorPlan": "https://static.wixstatic.com/media/ead5d3_e997ffc007be453d853817779acd4b2e~mv2.jpg"
+  }
+};
+      // Derive registries and config from MODEL_CONTENT
+      var PRICING_CONFIG = MODEL_CONTENT.pricing;
+      var ID_REGISTRY = MODEL_CONTENT.plattar.idRegistry;
+      var INTERIOR_IMAGE_REGISTRY = MODEL_CONTENT.images.interior;
+      var VARIATION_OPTION_IMAGE_REGISTRY = MODEL_CONTENT.images.variationOptions;
+      var FLOORPLAN_IMAGE_URL = MODEL_CONTENT.images.floorPlan || '';
+      var LAUNDRY_MODAL_IMAGE_URL = 'https://static.wixstatic.com/media/15e926_5c3daf08fdc6420d834ff97fd598f38b~mv2.png';
+      var EXTERIOR_VARIATION_MAP = MODEL_CONTENT.plattar.exteriorVariationMap || {};
+      var ADDON_VARIATION_MAP = MODEL_CONTENT.plattar.addOnVariationMap || {};
+      var SCENE_ID = MODEL_CONTENT.plattar.sceneId || (ID_REGISTRY.scenes && ID_REGISTRY.scenes[0] && ID_REGISTRY.scenes[0].id) || '';
+      var SIDEBAR_GROUPS = MODEL_CONTENT.pricing.sidebarGroups || [];
+
+
+      // --- CDN Load Status ---
+      // Slick/jQuery on first Interiors tab; Plattar SDK on first 3D bootstrap. refreshSlickCdnStatus() updates CDN_STATUS.slick after Slick loads.
+      var CDN_STATUS = {
+        slick: false,
+        plattar: false
+      };
+
+      var JQUERY_CDN_URL = 'https://code.jquery.com/jquery-3.7.1.min.js';
+      var SLICK_CDN_URL = 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js';
+      var SLICK_CSS_URLS = [
+        'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css',
+        'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css'
+      ];
+      var PLATTAR_SDK_CDN_URL = 'https://sdk.plattar.com/plattar-plugin.min.js';
+      var PLATTAR_DEFER_AFTER_LOAD_MS = 2500;
+      var PLATTAR_SDK_INJECT_DELAY_MS = 1000;
+
+      function refreshSlickCdnStatus() {
+        CDN_STATUS.slick = typeof jQuery !== 'undefined' && typeof jQuery.fn.slick === 'function';
+      }
+
+      function plattarEmbedRegistered() {
+        try {
+          return typeof customElements !== 'undefined' && customElements.get && customElements.get('plattar-embed');
+        } catch (e) {
+          return false;
+        }
+      }
+
+      var jqueryLoadState = 'idle';
+      var jqueryWaiters = [];
+
+      function whenJQuery(cb, errCb) {
+        if (typeof jQuery !== 'undefined') {
+          cb();
+          return;
+        }
+        jqueryWaiters.push({ cb: cb, err: errCb });
+        if (jqueryLoadState === 'loading') return;
+        jqueryLoadState = 'loading';
+        var s = document.createElement('script');
+        s.src = JQUERY_CDN_URL;
+        s.async = true;
+        s.onload = function () {
+          jqueryLoadState = 'done';
+          var w = jqueryWaiters.splice(0);
+          w.forEach(function (x) { x.cb(); });
+        };
+        s.onerror = function () {
+          jqueryLoadState = 'idle';
+          var w = jqueryWaiters.splice(0);
+          w.forEach(function (x) { if (x.err) x.err(); });
+        };
+        document.head.appendChild(s);
+      }
+
+      var slickCssInjected = false;
+
+      function ensureSlickCssThen(cb, errCb) {
+        if (slickCssInjected) {
+          cb();
+          return;
+        }
+        var idx = 0;
+        function appendNext() {
+          if (idx >= SLICK_CSS_URLS.length) {
+            slickCssInjected = true;
+            cb();
+            return;
+          }
+          var link = document.createElement('link');
+          link.rel = 'stylesheet';
+          link.href = SLICK_CSS_URLS[idx];
+          idx++;
+          link.onload = appendNext;
+          link.onerror = function () {
+            if (errCb) errCb();
+          };
+          document.head.appendChild(link);
+        }
+        appendNext();
+      }
+
+      var slickLoadState = 'idle';
+      var slickWaiters = [];
+
+      function whenSlick(cb, errCb) {
+        if (typeof jQuery !== 'undefined' && jQuery.fn && typeof jQuery.fn.slick === 'function') {
+          refreshSlickCdnStatus();
+          cb();
+          return;
+        }
+        slickWaiters.push({ cb: cb, err: errCb });
+        if (slickLoadState === 'loading') return;
+        slickLoadState = 'loading';
+        ensureSlickCssThen(function () {
+          whenJQuery(function () {
+            if (jQuery.fn && typeof jQuery.fn.slick === 'function') {
+              window.__slickLoaded = true;
+              refreshSlickCdnStatus();
+              slickLoadState = 'done';
+              var w = slickWaiters.splice(0);
+              w.forEach(function (x) { x.cb(); });
+              return;
+            }
+            var s2 = document.createElement('script');
+            s2.src = SLICK_CDN_URL;
+            s2.async = true;
+            s2.onload = function () {
+              window.__slickLoaded = true;
+              refreshSlickCdnStatus();
+              slickLoadState = 'done';
+              var w = slickWaiters.splice(0);
+              w.forEach(function (x) { x.cb(); });
+            };
+            s2.onerror = function () {
+              window.__slickLoaded = false;
+              refreshSlickCdnStatus();
+              slickLoadState = 'idle';
+              var w = slickWaiters.splice(0);
+              w.forEach(function (x) { if (x.err) x.err(); });
+            };
+            document.head.appendChild(s2);
+          }, function () {
+            slickLoadState = 'idle';
+            var w = slickWaiters.splice(0);
+            w.forEach(function (x) { if (x.err) x.err(); });
+          });
+        }, function () {
+          slickLoadState = 'idle';
+          var w = slickWaiters.splice(0);
+          w.forEach(function (x) { if (x.err) x.err(); });
+        });
+      }
+
+      var plattarSdkLoadState = 'idle';
+      var plattarSdkWaiters = [];
+
+      function whenPlattarSdk(cb, errCb) {
+        if (plattarEmbedRegistered()) {
+          cb();
+          return;
+        }
+        plattarSdkWaiters.push({ cb: cb, err: errCb });
+        if (plattarSdkLoadState === 'loading') return;
+        plattarSdkLoadState = 'loading';
+        var ps = document.createElement('script');
+        ps.src = PLATTAR_SDK_CDN_URL;
+        ps.async = true;
+        ps.onload = function () {
+          plattarSdkLoadState = 'done';
+          var w = plattarSdkWaiters.splice(0);
+          w.forEach(function (x) { x.cb(); });
+        };
+        ps.onerror = function () {
+          plattarSdkLoadState = 'idle';
+          console.warn('Plattar SDK failed to load from CDN.');
+          var w = plattarSdkWaiters.splice(0);
+          w.forEach(function (x) { if (x.err) x.err(); });
+        };
+        document.head.appendChild(ps);
+      }
+
+      // Controls Bedroom Wardrobe 2x choice visibility only. Compact Harmony is 1-bedroom.
+      var IS_2_BEDROOM = false;
+
+      function getVisibleOptions() {
+        return PRICING_CONFIG.options;
+      }
+
+      function getFilteredChoices(option) {
+        if (option.category === 'Bedroom Wardrobe' && !IS_2_BEDROOM) {
+          return option.choices.filter(function (c) { return c.id !== 'bedroom_wardrobe_2x'; });
+        }
+        return option.choices;
+      }
+
+      // =======================================================
+      // CENTRAL STATE OBJECT
+      // =======================================================
+
+      var state = {
+        basePrice: PRICING_CONFIG.product.basePrice,
+        selections: {},
+        activeTab: '3d'
+      };
+
+      function initState() {
+        getVisibleOptions().forEach(function (option) {
+          var choices = getFilteredChoices(option);
+          if (option.type === 'boolean') {
+            state.selections[option.category] = null;
+          } else {
+            state.selections[option.category] = choices[0].id;
+          }
+        });
+      }
+
+      function getSelectedChoice(category) {
+        var selectedId = state.selections[category];
+        if (!selectedId) return null;
+        var option = PRICING_CONFIG.options.find(function (o) { return o.category === category; });
+        if (!option) return null;
+        return option.choices.find(function (c) { return c.id === selectedId; }) || null;
+      }
+
+      // =======================================================
+      // HELPERS
+      // =======================================================
+
+      function formatOptionPrice(price) {
+        if (price === null || price === undefined || price === 0) return '+$0';
+        return '+$' + Math.ceil(price).toLocaleString();
+      }
+
+      function formatTotalPrice(total) {
+        return 'From $' + Math.ceil(total).toLocaleString() + ' incl. GST';
+      }
+
+      // Phase 8: Cross-feature wiring. Only these categories drive tab auto-switch (never Floorplan).
+      // Exterior Cladding → 3D tab + 3D variation update. Interior Lining / Flooring → Interiors tab + interior images.
+      // Add-on categories with 3D objects (Fireplace, Heatpump, Solar, Water Heating) → 3D tab + variation update.
+      // Other add-ons (Laundry Joinery, Bedroom Wardrobe) → state + pricing only; no tab switch.
+      var CATEGORY_TAB_MAP = {
+        'Exterior Cladding': '3d',
+        'Interior Lining': 'interiors',
+        'Flooring': 'interiors',
+        'Cabinets': 'interiors',
+        'Fireplace': '3d',
+        'Heatpump': '3d',
+        'Solar': '3d',
+        'Water Heating': '3d'
+      };
+
+      function isAddOnCategory(category) {
+        var option = PRICING_CONFIG.options.find(function (o) { return o.category === category; });
+        if (!option) return false;
+        return option.choices.some(function (c) { return c.price !== null && c.price > 0; });
+      }
+
+      // --- Laundry Joinery reference modal ---
+      var laundryModalEl;
+      var laundryModalCloseBtn;
+      var laundryModalBackdrop;
+      var laundryModalImage;
+      var laundryModalLastFocus = null;
+      var laundryModalBindingsDone = false;
+
+      function getLaundryModalElements() {
+        if (!laundryModalEl) {
+          laundryModalEl = document.getElementById('laundry-joinery-modal');
+          if (!laundryModalEl) return;
+          laundryModalCloseBtn = laundryModalEl.querySelector('.laundry-modal-close');
+          laundryModalBackdrop = laundryModalEl.querySelector('.laundry-modal-backdrop');
+          laundryModalImage = document.getElementById('laundry-joinery-modal-image');
+        }
+      }
+
+      function openLaundryJoineryModal() {
+        getLaundryModalElements();
+        if (!laundryModalEl) return;
+        laundryModalLastFocus = document.activeElement;
+        if (laundryModalImage && LAUNDRY_MODAL_IMAGE_URL) {
+          laundryModalImage.src = LAUNDRY_MODAL_IMAGE_URL;
+        }
+        laundryModalEl.setAttribute('aria-hidden', 'false');
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            laundryModalEl.classList.add('is-open');
+          });
+        });
+        if (laundryModalCloseBtn) {
+          setTimeout(function () {
+            laundryModalCloseBtn.focus();
+          }, 0);
+        }
+      }
+
+      function closeLaundryJoineryModal() {
+        if (!laundryModalEl) {
+          getLaundryModalElements();
+        }
+        if (!laundryModalEl) return;
+        laundryModalEl.classList.remove('is-open');
+        laundryModalEl.setAttribute('aria-hidden', 'true');
+        if (laundryModalLastFocus && typeof laundryModalLastFocus.focus === 'function') {
+          try {
+            laundryModalLastFocus.focus();
+          } catch (e) { /* ignore */ }
+        }
+        laundryModalLastFocus = null;
+      }
+
+      function onLaundryModalEscape(e) {
+        if (e.key !== 'Escape') return;
+        if (!laundryModalEl || !laundryModalEl.classList.contains('is-open')) return;
+        e.preventDefault();
+        closeLaundryJoineryModal();
+      }
+
+      function initLaundryJoineryModal() {
+        if (laundryModalBindingsDone) return;
+        getLaundryModalElements();
+        if (!laundryModalEl || !laundryModalCloseBtn) return;
+        laundryModalCloseBtn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          closeLaundryJoineryModal();
+        });
+        if (laundryModalBackdrop) {
+          laundryModalBackdrop.addEventListener('click', closeLaundryJoineryModal);
+        }
+        document.addEventListener('keydown', onLaundryModalEscape);
+        laundryModalBindingsDone = true;
+      }
+
+      // =======================================================
+      // PHASE 2: SIDEBAR — render, accordion, option selection
+      // =======================================================
+
+      function renderSidebar() {
+        var sidebar = document.getElementById('sidebar');
+        var html = '';
+        var allOptions = getVisibleOptions();
+
+        SIDEBAR_GROUPS.forEach(function (group) {
+          html += '<div class="accordion-item" data-group="' + group.id + '">';
+          html += '<div class="accordion-header" role="button" tabindex="0" aria-expanded="false">';
+          html += '<div class="accordion-header-inner">';
+          html += '<span>' + group.title + '</span>';
+          html += '</div>';
+          html += '<span class="accordion-icon">+</span>';
+          html += '</div>';
+          html += '<div class="accordion-content" role="region">';
+          html += '<div class="accordion-content-inner">';
+
+          group.categories.forEach(function (catName) {
+            var option = allOptions.find(function (o) { return o.category === catName; });
+            if (!option) return;
+            var choices = getFilteredChoices(option);
+            var gridClass = option.display === 'box' ? ' option-subblock-grid' : '';
+            html += '<div class="option-subblock' + gridClass + '" data-category="' + option.category + '">';
+            if (group.categories.length > 1) {
+              html += '<div class="option-subblock-heading">' + option.category + '</div>';
+            }
+            html += '<div class="option-subblock-choices' + gridClass + '">';
+            choices.forEach(function (choice) {
+              html += renderChoice(option, choice);
+            });
+            html += '</div></div>';
+          });
+
+          html += '</div></div></div>';
+        });
+
+        sidebar.innerHTML = html;
+        bindAccordionEvents();
+        bindOptionEvents();
+      }
+
+      function renderChoice(option, choice) {
+        var isSelected = state.selections[option.category] === choice.id;
+        var selectedClass = isSelected ? ' selected' : '';
+        var priceStr = formatOptionPrice(choice.price);
+
+        if (option.display === 'box_with_image') {
+          var imgUrl = VARIATION_OPTION_IMAGE_REGISTRY[choice.id] || '';
+          var flooringNote = (choice.id === 'none_flooring')
+            ? '<span class="option-box-note">Renders use \'Premium Hush – Smooth Oak High Noon\' flooring</span>'
+            : '';
+          return '<div class="option-box' + selectedClass + '" data-category="' + option.category + '" data-choice="' + choice.id + '" tabindex="0" role="radio" aria-checked="' + isSelected + '">'
+            + (imgUrl ? '<img class="option-box-image" src="' + imgUrl + '" alt="' + choice.label + '">' : '')
+            + '<div class="option-box-text">'
+            + '<span class="option-box-label">' + choice.label + '</span>'
+            + '<span class="option-box-price">' + priceStr + '</span>'
+            + flooringNote
+            + '</div></div>';
+        }
+
+        if (option.display === 'box') {
+          var note = (option.category === 'Fireplace' && choice.id === 'fireplace_added') ? '<span class="option-box-note">Requires consent</span>' : '';
+          return '<div class="option-box' + selectedClass + '" data-category="' + option.category + '" data-choice="' + choice.id + '" tabindex="0" role="radio" aria-checked="' + isSelected + '">'
+            + '<div class="option-box-text">'
+            + '<span class="option-box-label">' + choice.label + '</span>'
+            + '<span class="option-box-price">' + priceStr + '</span>'
+            + note
+            + '</div></div>';
+        }
+
+        return '';
+      }
+
+      function bindAccordionEvents() {
+        var headers = document.querySelectorAll('.accordion-header');
+        headers.forEach(function (header) {
+          header.addEventListener('click', function () {
+            toggleAccordion(header.parentElement);
+          });
+          header.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              toggleAccordion(header.parentElement);
+            }
+          });
+        });
+      }
+
+      function toggleAccordion(item) {
+        var wasOpen = item.classList.contains('open');
+        document.querySelectorAll('.accordion-item.open').forEach(function (openItem) {
+          openItem.classList.remove('open');
+          openItem.querySelector('.accordion-header').setAttribute('aria-expanded', 'false');
+        });
+        if (!wasOpen) {
+          item.classList.add('open');
+          item.querySelector('.accordion-header').setAttribute('aria-expanded', 'true');
+        }
+      }
+
+      function bindOptionEvents() {
+        document.querySelectorAll('.option-box').forEach(function (el) {
+          el.addEventListener('click', function () {
+            handleOptionSelect(el.dataset.category, el.dataset.choice);
+          });
+          el.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              handleOptionSelect(el.dataset.category, el.dataset.choice);
+            }
+          });
+        });
+      }
+
+      function handleOptionSelect(category, choiceId) {
+        var option = PRICING_CONFIG.options.find(function (o) { return o.category === category; });
+        if (!option) return;
+
+        state.selections[category] = choiceId;
+
+        updateOptionVisuals(category);
+
+        var targetTab = CATEGORY_TAB_MAP[category];
+        if (targetTab) {
+          switchTab(targetTab);
+        }
+
+        if (isAddOnCategory(category)) {
+          recalcPricing();
+        }
+
+        if (category === 'Exterior Cladding') {
+          updateExteriorVariation(state.selections[category]);
+        }
+
+        if (category === 'Fireplace' || category === 'Heatpump' || category === 'Solar' || category === 'Water Heating') {
+          updateAddOnVariations();
+        }
+
+        if (category === 'Interior Lining' || category === 'Flooring' || category === 'Cabinets') {
+          updateInteriorImages();
+        }
+
+        if (category === 'Laundry Joinery') {
+          if (choiceId === '1_laundry_joinery') {
+            openLaundryJoineryModal();
+          } else if (choiceId === 'none_laundry') {
+            closeLaundryJoineryModal();
+          }
+        }
+
+        sendConfigToWix();
+      }
+
+      function updateOptionVisuals(category) {
+        var container = document.querySelector('.option-subblock[data-category="' + category + '"]');
+        if (!container) return;
+        container.querySelectorAll('.option-box').forEach(function (el) {
+          var isSelected = state.selections[category] === el.dataset.choice;
+          el.classList.toggle('selected', isSelected);
+          el.setAttribute('aria-checked', String(isSelected));
+        });
+      }
+
+      // =======================================================
+      // PHASE 3: TABS — switching, auto-switch, pricing display
+      // =======================================================
+
+      var TAB_IDS = ['3d', 'interiors', 'floorplan'];
+      var PANEL_MAP = {
+        '3d': 'panel-3d',
+        'interiors': 'panel-interiors',
+        'floorplan': 'panel-floorplan'
+      };
+
+      function switchTab(tabId, options) {
+        if (TAB_IDS.indexOf(tabId) === -1) return;
+        var skipPlattar = options && options.skipPlattarBootstrap;
+        if (tabId === '3d' && !skipPlattar) {
+          ensurePlattarInitialized();
+        }
+        state.activeTab = tabId;
+
+        document.querySelectorAll('.media-panel').forEach(function (p) {
+          p.classList.remove('panel-active');
+        });
+        var panel = document.getElementById(PANEL_MAP[tabId]);
+        if (panel) panel.classList.add('panel-active');
+
+        document.querySelectorAll('.media-tab').forEach(function (btn) {
+          var isActive = btn.dataset.tab === tabId;
+          btn.classList.toggle('tab-active', isActive);
+          btn.setAttribute('aria-selected', String(isActive));
+        });
+
+        if (tabId === 'floorplan') {
+          ensureFloorplanImageLoaded();
+        }
+
+        if (tabId === 'interiors') {
+          whenSlick(function () {
+            if (!slickInitialized) {
+              initInteriorSlider();
+            }
+            if (state.activeTab === 'interiors' && slickInitialized) {
+              var $slider = jQuery('#interior-slider');
+              if ($slider.length && $slider.hasClass('slick-initialized')) {
+                requestAnimationFrame(function () {
+                  $slider.slick('setPosition');
+                });
+              }
+            }
+          }, function () {
+            initInteriorSlider();
+          });
+        }
+
+        if (tabId === '3d' && plattarReady) {
+          showARButton();
+          var embed = document.getElementById('plattar-viewer');
+          if (embed && embed.getAttribute('embed-type') === 'launcher') {
+            embed.setAttribute('embed-type', 'viewer');
+          }
+          setARButtonIcon(false);
+        } else {
+          hideARButton();
+        }
+      }
+
+      function bindTabEvents() {
+        document.querySelectorAll('.media-tab').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            switchTab(btn.dataset.tab);
+          });
+          btn.addEventListener('keydown', function (e) {
+            var idx = TAB_IDS.indexOf(btn.dataset.tab);
+            if (e.key === 'ArrowLeft' && idx > 0) {
+              e.preventDefault();
+              switchTab(TAB_IDS[idx - 1]);
+              document.querySelector('.media-tab[data-tab="' + TAB_IDS[idx - 1] + '"]').focus();
+            } else if (e.key === 'ArrowRight' && idx >= 0 && idx < TAB_IDS.length - 1) {
+              e.preventDefault();
+              switchTab(TAB_IDS[idx + 1]);
+              document.querySelector('.media-tab[data-tab="' + TAB_IDS[idx + 1] + '"]').focus();
+            }
+          });
+        });
+      }
+
+      var floorplanImageLoadedOnce = false;
+
+      function ensureFloorplanImageLoaded() {
+        if (floorplanImageLoadedOnce) return;
+        floorplanImageLoadedOnce = true;
+        initFloorplanImage();
+      }
+
+      function initFloorplanImage() {
+        var img = document.getElementById('floorplan-image');
+        var placeholder = document.querySelector('#panel-floorplan .media-panel-placeholder');
+        if (!img) return;
+        img.src = FLOORPLAN_IMAGE_URL;
+        img.onload = function () {
+          img.classList.add('loaded');
+          if (placeholder) placeholder.style.display = 'none';
+        };
+        img.onerror = function () {
+          if (placeholder) placeholder.textContent = 'Floor plan image could not be loaded.';
+        };
+      }
+
+      function updatePricingDisplay(total) {
+        var el = document.getElementById('pricing-display-text');
+        if (el) el.textContent = formatTotalPrice(total);
+      }
+
+      // =======================================================
+      // PHASE 4: PRICING ENGINE
+      // =======================================================
+
+      function calculatePrice() {
+        var total = state.basePrice;
+        PRICING_CONFIG.options.forEach(function (option) {
+          var selectedId = state.selections[option.category];
+          if (!selectedId) return;
+          var choice = option.choices.find(function (c) { return c.id === selectedId; });
+          if (!choice) return;
+          var modifier = choice.price;
+          if (modifier === null || modifier === undefined) modifier = 0;
+          total += modifier;
+        });
+        return Math.ceil(total);
+      }
+
+      function recalcPricing() {
+        var total = calculatePrice();
+        updatePricingDisplay(total);
+      }
+
+      // =======================================================
+      // PHASE 5: 3D EXTERIOR VIEWER
+      // =======================================================
+      // 3D tab first; after window load: PLATTAR_DEFER_AFTER_LOAD_MS (2500ms), four rAFs, PLATTAR_SDK_INJECT_DELAY_MS (1000ms), then requestIdleCallback (timeout 3000) or fallback, then whenPlattarSdk. Slick CSS on first Interiors tab. Boot: switchTab('3d', { skipPlattarBootstrap: true }).
+      // SCENE_ID and EXTERIOR_VARIATION_MAP come from MODEL_CONTENT above.
+      var plattarReady = false;
+      var plattarLazyInitStarted = false;
+      var variationDebounceTimer = null;
+
+      // Step 4 (Timeout and error message): one timeout = SDK never defined; one = viewer/scene never ready. Both show same friendly error in 3D panel (centre, solid box). See PLATTAR_TROUBLESHOOTING.MD.
+      function showPlattarError(panel, message) {
+        if (!panel) return;
+        panel.innerHTML = '<div class="media-error-box">' + (message || 'The 3D viewer is temporarily unavailable. You can still configure your home using the options below.') + '</div>';
+      }
+
+      // Step 1 (SDK load and readiness): wait for custom element plattar-embed; do not use window.Plattar. Timeout = SDK failed to load. See PLATTAR_TROUBLESHOOTING.MD.
+      function initPlattar() {
+        var panel = document.getElementById('panel-3d');
+        if (!panel) return;
+
+        if (window.location.protocol === 'file:') {
+          showPlattarError(panel, 'The 3D viewer requires a secure page (HTTP or HTTPS from a web server). It cannot run when the page is opened directly from a file. Use a local server (e.g. npx serve, or Python\u2019s http.server) or deploy to Wix.');
+          return;
+        }
+
+        var PLATTAR_SDK_TIMEOUT_MS = 10000;
+        var PLATTAR_LOAD_TIMEOUT_MS = 30000;
+        var loadingMsg = 'The 3D viewer is temporarily unavailable. You can still configure your home using the options below.';
+        // Step 4: SDK timeout above; load timeout below (viewer/scene never ready) — same message.
+        var sdkTimedOut = false;
+
+        function createEmbedAndPoll() {
+          if (!SCENE_ID || typeof SCENE_ID !== 'string' || SCENE_ID.trim() === '') {
+            showPlattarError(panel, loadingMsg);
+            return;
+          }
+
+          var embed = document.createElement('plattar-embed');
+          embed.id = 'plattar-viewer';
+          embed.setAttribute('scene-id', SCENE_ID);
+          embed.setAttribute('init', 'viewer');
+          embed.setAttribute('width', '100%');
+          embed.setAttribute('height', '100%');
+          var initialChoiceId = state.selections && state.selections['Exterior Cladding'];
+          var initialVariationId = initialChoiceId && EXTERIOR_VARIATION_MAP[initialChoiceId];
+          if (initialVariationId) {
+            embed.setAttribute('variation-id', initialVariationId);
+          }
+          embed.style.width = '100%';
+          embed.style.height = '100%';
+
+          var loadingEl = document.createElement('div');
+          loadingEl.className = 'panel-3d-loading';
+          loadingEl.id = 'panel-3d-loading';
+          loadingEl.innerHTML = '<div class="loading-spinner"></div><span>Loading 3D view\u2026</span>';
+
+          panel.innerHTML = '';
+          panel.appendChild(embed);
+          panel.appendChild(loadingEl);
+
+          // Size internal shadow DOM so viewer fills container (iframe is inside plattar-configurator; we cannot target iframe directly).
+          function patchPlattarEmbedSize() {
+            try {
+              var root = embed.shadowRoot;
+              if (!root) return;
+              var configurator = root.querySelector('plattar-configurator') || root.querySelector('[id*="plattar"]') || root.firstElementChild;
+              if (configurator) {
+                configurator.style.width = '100%';
+                configurator.style.height = '100%';
+                configurator.style.display = 'block';
+                var iframe = configurator.querySelector && configurator.querySelector('iframe');
+                if (iframe) {
+                  iframe.style.width = '100%';
+                  iframe.style.height = '100%';
+                }
+              }
+            } catch (e) {
+              // Shadow DOM not accessible or structure different; rely on embed attributes/styles.
+            }
+          }
+          setTimeout(patchPlattarEmbedSize, 50);
+          setTimeout(patchPlattarEmbedSize, 400);
+
+          // Step 3 (Async viewer readiness): embed.viewer is not available synchronously. Poll until it exists, then set setLoading; when params.loading === false hide loading UI. See PLATTAR_TROUBLESHOOTING.MD.
+          var checkInterval = setInterval(function () {
+            if (!embed.viewer) return;
+            clearInterval(checkInterval);
+
+            embed.viewer.context.setLoading = function (params) {
+              if (params.loading === false) {
+                plattarReady = true;
+                patchPlattarEmbedSize();
+                var el = document.getElementById('panel-3d-loading');
+                if (el) el.style.display = 'none';
+                updateAddOnVariations();
+                if (state.activeTab === '3d') showARButton();
+              }
+            };
+          }, 100);
+
+          setTimeout(function () {
+            if (!plattarReady) {
+              var el = document.getElementById('panel-3d-loading');
+              if (el) el.innerHTML = '<div class="media-error-box">' + loadingMsg + '</div>';
+            }
+          }, PLATTAR_LOAD_TIMEOUT_MS);
+          // Step 4 end: viewer/scene timeout replaces loading with same error message.
+        }
+
+        if (typeof customElements !== 'undefined' && customElements.whenDefined) {
+          var sdkTimeout = setTimeout(function () {
+            sdkTimedOut = true;
+            showPlattarError(panel, loadingMsg);
+          }, PLATTAR_SDK_TIMEOUT_MS);
+          customElements.whenDefined('plattar-embed').then(function () {
+            clearTimeout(sdkTimeout);
+            if (sdkTimedOut) return;
+            createEmbedAndPoll();
+          }).catch(function () {
+            clearTimeout(sdkTimeout);
+            showPlattarError(panel, loadingMsg);
+          });
+        } else {
+          try {
+            createEmbedAndPoll();
+          } catch (e) {
+            showPlattarError(panel, loadingMsg);
+          }
+        }
+      }
+
+      function ensurePlattarInitialized() {
+        if (plattarLazyInitStarted) return;
+        plattarLazyInitStarted = true;
+        whenPlattarSdk(function () {
+          initPlattar();
+        }, function () {
+          var p3 = document.getElementById('panel-3d');
+          if (p3) {
+            showPlattarError(p3, 'The 3D viewer is temporarily unavailable. You can still configure your home using the options below.');
+          }
+        });
+      }
+
+      function scheduleDeferredPlattarInit() {
+        function startPlattarAfterIdle() {
+          if (typeof window.requestIdleCallback === 'function') {
+            window.requestIdleCallback(
+              function () {
+                ensurePlattarInitialized();
+              },
+              { timeout: 3000 }
+            );
+          } else {
+            ensurePlattarInitialized();
+          }
+        }
+        function afterSdkInjectDelay() {
+          setTimeout(function () {
+            startPlattarAfterIdle();
+          }, PLATTAR_SDK_INJECT_DELAY_MS);
+        }
+        function afterDeferChain() {
+          setTimeout(function () {
+            requestAnimationFrame(function () {
+              requestAnimationFrame(function () {
+                requestAnimationFrame(function () {
+                  requestAnimationFrame(function () {
+                    afterSdkInjectDelay();
+                  });
+                });
+              });
+            });
+          }, PLATTAR_DEFER_AFTER_LOAD_MS);
+        }
+        if (document.readyState === 'complete') {
+          afterDeferChain();
+        } else {
+          window.addEventListener('load', function onPlattarDeferLoad() {
+            window.removeEventListener('load', onPlattarDeferLoad);
+            afterDeferChain();
+          });
+        }
+      }
+
+      // Step 5 (Variation updates): call selectVariationID only when embed.viewer and messenger exist (plattarReady). Variation IDs from ID Registry (EXTERIOR_VARIATION_MAP). Debounce 300ms. See PLATTAR_TROUBLESHOOTING.MD.
+      function updateExteriorVariation(choiceId) {
+        if (!plattarReady) return;
+        var variationId = EXTERIOR_VARIATION_MAP[choiceId];
+        if (!variationId) return;
+
+        if (variationDebounceTimer) clearTimeout(variationDebounceTimer);
+        variationDebounceTimer = setTimeout(function () {
+          var embed = document.getElementById('plattar-viewer');
+          if (!embed || !embed.viewer || !embed.viewer.messenger) return;
+          try {
+            embed.viewer.messenger.selectVariationID(variationId);
+          } catch (e) {
+            console.warn('3D variation update failed:', e);
+          }
+        }, 300);
+      }
+
+      // Step 6 (Add-on variation updates): toggle Solar, Heating, and Hotwater 3D objects based on sidebar selections.
+      var addOnDebounceTimer = null;
+
+      function updateAddOnVariations() {
+        if (!plattarReady) return;
+        var embed = document.getElementById('plattar-viewer');
+        if (!embed || !embed.viewer || !embed.viewer.messenger) return;
+
+        if (addOnDebounceTimer) clearTimeout(addOnDebounceTimer);
+        addOnDebounceTimer = setTimeout(function () {
+          var embed = document.getElementById('plattar-viewer');
+          if (!embed || !embed.viewer || !embed.viewer.messenger) return;
+
+          try {
+            if (ADDON_VARIATION_MAP.heating) {
+              var fireplaceSelected = state.selections['Fireplace'] === 'fireplace_added';
+              var heatpumpSelected = state.selections['Heatpump'] === 'heatpump_added';
+              var heatingVarId;
+              if (fireplaceSelected && heatpumpSelected) {
+                heatingVarId = ADDON_VARIATION_MAP.heating.firePlusHeatpump;
+              } else if (fireplaceSelected) {
+                heatingVarId = ADDON_VARIATION_MAP.heating.fireplace;
+              } else if (heatpumpSelected) {
+                heatingVarId = ADDON_VARIATION_MAP.heating.heatpump;
+              } else {
+                heatingVarId = ADDON_VARIATION_MAP.heating.none;
+              }
+              if (heatingVarId) embed.viewer.messenger.selectVariationID(heatingVarId);
+            }
+
+            if (ADDON_VARIATION_MAP.solar) {
+              var solarVarId = state.selections['Solar'] === 'solar_added'
+                ? ADDON_VARIATION_MAP.solar.solar
+                : ADDON_VARIATION_MAP.solar.none;
+              if (solarVarId) embed.viewer.messenger.selectVariationID(solarVarId);
+            }
+
+            if (ADDON_VARIATION_MAP.hotwater) {
+              var waterChoice = state.selections['Water Heating'];
+              var hotwaterVarId;
+              if (waterChoice === 'electric_cylinder') {
+                hotwaterVarId = ADDON_VARIATION_MAP.hotwater.hotWater;
+              } else if (waterChoice === 'gas_kelifont') {
+                hotwaterVarId = ADDON_VARIATION_MAP.hotwater.gasInfinity;
+              } else {
+                hotwaterVarId = ADDON_VARIATION_MAP.hotwater.none;
+              }
+              if (hotwaterVarId) embed.viewer.messenger.selectVariationID(hotwaterVarId);
+            }
+          } catch (e) {
+            console.warn('3D add-on variation update failed:', e);
+          }
+        }, 300);
+      }
+
+      // =======================================================
+      // AR BUTTON (View in AR)
+      // =======================================================
+
+      var AR_ICON_URL = 'https://static.wixstatic.com/shapes/15e926_3b31988db3e84945b80e28e69130536e.svg';
+      var AR_CLOSE_ICON_URL = 'https://static.wixstatic.com/shapes/15e926_28611c7621114ff1834d9b0fd588a0af.svg';
+
+      (function setARIcons() {
+        document.documentElement.style.setProperty('--ar-icon-url', 'url(' + AR_ICON_URL + ')');
+        document.documentElement.style.setProperty('--ar-close-icon-url', 'url(' + AR_CLOSE_ICON_URL + ')');
+      })();
+
+      function showARButton() {
+        var btn = document.getElementById('ar-button');
+        if (btn) btn.style.display = 'block';
+      }
+
+      function hideARButton() {
+        var btn = document.getElementById('ar-button');
+        if (btn) btn.style.display = 'none';
+      }
+
+      function setARButtonIcon(isLauncher) {
+        var btn = document.getElementById('ar-button');
+        if (!btn) return;
+        if (isLauncher) {
+          btn.classList.add('launcher-active');
+        } else {
+          btn.classList.remove('launcher-active');
+        }
+      }
+
+      function toggleLaunchPage(forceLauncher) {
+        var embed = document.getElementById('plattar-viewer');
+        if (!embed) return;
+
+        if (forceLauncher || embed.getAttribute('embed-type') !== 'launcher') {
+          embed.setAttribute('embed-type', 'launcher');
+          setARButtonIcon(true);
+        } else {
+          embed.setAttribute('embed-type', 'viewer');
+          setARButtonIcon(false);
+        }
+      }
+
+      function launchAR() {
+        var embed = document.getElementById('plattar-viewer');
+        if (!embed) return;
+
+        if (embed.getAttribute('embed-type') === 'launcher') {
+          embed.setAttribute('embed-type', 'viewer');
+          setARButtonIcon(false);
+          return;
+        }
+
+        if (typeof PlattarARAdapter !== 'undefined' && PlattarARAdapter.Util && PlattarARAdapter.Util.canAugment()) {
+          embed.startAR()
+            .catch(function (err) {
+              console.warn('Direct AR launch failed, falling back to launch page:', err);
+              toggleLaunchPage(true);
+            });
+        } else {
+          toggleLaunchPage(true);
+        }
+      }
+
+      document.getElementById('ar-button').addEventListener('click', launchAR);
+
+      // =======================================================
+      // PHASE 6: INTERIOR SLIDER (Slick + variation images)
+      // =======================================================
+
+      var CHOICE_TO_FLOOR_SLUG = {
+        none_flooring: 'SmoothOakHighNoon',
+        smooth_oak_high_noon: 'SmoothOakHighNoon',
+        turin_oak_slacked_oyster: 'TurinOakSlackedOyster',
+        swiss_oak_burn: 'SwissOakBern'
+      };
+
+      var CHOICE_TO_LINING_SLUGS = {
+        white_gib_redline_ply_lounge_ceiling: { walls: 'Gib', ceiling: 'Redline' },
+        white_gib_blondline_ply_lounge_ceiling: { walls: 'Gib', ceiling: 'Birch' },
+        redline_ply_everywhere: { walls: 'Redline', ceiling: 'Redline' },
+        blondline_ply_everywhere: { walls: 'Birch', ceiling: 'Birch' }
+      };
+
+      var CHOICE_TO_CABINET_SLUG = {
+        cabinets_bullet: 'Bullet',
+        cabinets_green_slate: 'GreenSlate',
+        cabinets_white: 'White'
+      };
+      var SLIDE_TYPES = ['living', 'bathroom'];
+      var slickInitialized = false;
+
+      function buildVariationKey() {
+        var floorId = state.selections['Flooring'];
+        var liningId = state.selections['Interior Lining'];
+        var cabinetId = state.selections['Cabinets'];
+
+        var floorSlug = CHOICE_TO_FLOOR_SLUG[floorId];
+        if (!floorSlug) return null;
+
+        var liningSlugs = CHOICE_TO_LINING_SLUGS[liningId];
+        if (!liningSlugs) return null;
+
+        var cabinetSlug = CHOICE_TO_CABINET_SLUG[cabinetId] || 'Bullet';
+
+        return 'Floor-' + floorSlug
+          + '_Walls-' + liningSlugs.walls
+          + '_Ceiling-' + liningSlugs.ceiling
+          + '_Cabinets-' + cabinetSlug;
+      }
+
+      function initInteriorSlider() {
+        var panel = document.getElementById('panel-interiors');
+
+        if (!CDN_STATUS.slick) {
+          panel.innerHTML = '<div class="media-error-box">The interior gallery is temporarily unavailable. You can still configure your home using the options below.</div>';
+          return;
+        }
+
+        var key = buildVariationKey();
+        var html = '<div class="interior-slider-wrap"><div id="interior-slider">';
+
+        SLIDE_TYPES.forEach(function (slideType) {
+          var baseUrl = INTERIOR_IMAGE_REGISTRY[slideType].base;
+          var initialUrl = (key && INTERIOR_IMAGE_REGISTRY[slideType][key]) ? INTERIOR_IMAGE_REGISTRY[slideType][key] : baseUrl;
+          html += '<div class="interior-slide" data-slide-type="' + slideType + '">'
+            + '<img class="interior-slide-img" src="' + initialUrl + '" alt="Interior ' + slideType + ' view" data-base-url="' + baseUrl + '" data-current-url="' + initialUrl + '">'
+            + '<div class="interior-slide-loading" style="display:none;"><div class="loading-spinner"></div></div>'
+            + '</div>';
+        });
+
+        html += '</div></div>';
+        panel.innerHTML = html;
+
+        jQuery('#interior-slider').slick({
+          arrows: true,
+          dots: false,
+          swipe: true,
+          infinite: false,
+          lazyLoad: false,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          adaptiveHeight: false
+        });
+
+        slickInitialized = true;
+        updateInteriorImages();
+      }
+
+      function updateInteriorImages() {
+        if (!slickInitialized) return;
+
+        var key = buildVariationKey();
+
+        SLIDE_TYPES.forEach(function (slideType) {
+          var slideEl = document.querySelector('.interior-slide[data-slide-type="' + slideType + '"]');
+          if (!slideEl) return;
+
+          var img = slideEl.querySelector('.interior-slide-img');
+          var loadingEl = slideEl.querySelector('.interior-slide-loading');
+          var baseUrl = img.getAttribute('data-base-url');
+
+          var url;
+          if (key && INTERIOR_IMAGE_REGISTRY[slideType][key]) {
+            url = INTERIOR_IMAGE_REGISTRY[slideType][key];
+          } else {
+            url = baseUrl;
+          }
+
+          if (img.getAttribute('data-current-url') === url) return;
+
+          loadingEl.style.display = 'flex';
+
+          var tempImg = new Image();
+          tempImg.onload = function () {
+            img.src = url;
+            img.setAttribute('data-current-url', url);
+            loadingEl.style.display = 'none';
+          };
+          tempImg.onerror = function () {
+            img.src = baseUrl;
+            img.setAttribute('data-current-url', baseUrl);
+            loadingEl.style.display = 'none';
+          };
+          tempImg.src = url;
+        });
+      }
+
+      // =======================================================
+      // PHASE 9: Wix integration — postMessage to parent
+      // Payload shape: { type, product, price, currency, selections }. See Cursor Docs/POSTMESSAGE_PAYLOAD.MD for Velo listener.
+      // =======================================================
+
+      var POSTMESSAGE_TYPE = (MODEL_CONTENT && MODEL_CONTENT.metadata && MODEL_CONTENT.metadata.postMessageType) ? MODEL_CONTENT.metadata.postMessageType : 'configurator-config';
+
+      function sendConfigToWix() {
+        try {
+          var payload = {
+            type: POSTMESSAGE_TYPE,
+            product: (PRICING_CONFIG && PRICING_CONFIG.product) ? PRICING_CONFIG.product.name : '',
+            price: calculatePrice(),
+            currency: (PRICING_CONFIG && PRICING_CONFIG.product) ? PRICING_CONFIG.product.currency : 'NZD',
+            selections: state.selections ? Object.assign({}, state.selections) : {}
+          };
+          if (window.parent && window.parent !== window) {
+            window.parent.postMessage(payload, '*');
+          }
+        } catch (e) {
+          console.warn('Configurator: postMessage failed', e);
+        }
+      }
+
+      // =======================================================
+      // EXPOSE TO MODULE SCOPE (for subsequent phases)
+      // =======================================================
+
+      window.__configurator = {
+        PRICING_CONFIG: PRICING_CONFIG,
+        ID_REGISTRY: ID_REGISTRY,
+        INTERIOR_IMAGE_REGISTRY: INTERIOR_IMAGE_REGISTRY,
+        VARIATION_OPTION_IMAGE_REGISTRY: VARIATION_OPTION_IMAGE_REGISTRY,
+        FLOORPLAN_IMAGE_URL: FLOORPLAN_IMAGE_URL,
+        CDN_STATUS: CDN_STATUS,
+        state: state,
+        getSelectedChoice: getSelectedChoice,
+        switchTab: switchTab,
+        updatePricingDisplay: updatePricingDisplay,
+        updateOptionVisuals: updateOptionVisuals,
+        isAddOnCategory: isAddOnCategory,
+        CATEGORY_TAB_MAP: CATEGORY_TAB_MAP,
+        calculatePrice: calculatePrice,
+        recalcPricing: recalcPricing,
+        EXTERIOR_VARIATION_MAP: EXTERIOR_VARIATION_MAP,
+        ADDON_VARIATION_MAP: ADDON_VARIATION_MAP,
+        updateExteriorVariation: updateExteriorVariation,
+        updateAddOnVariations: updateAddOnVariations,
+        buildVariationKey: buildVariationKey,
+        updateInteriorImages: updateInteriorImages,
+        sendConfigToWix: sendConfigToWix,
+        launchAR: launchAR,
+        toggleLaunchPage: toggleLaunchPage
+      };
+
+      // =======================================================
+      // INITIALIZATION
+      // =======================================================
+
+      function init() {
+        initState();
+        initLaundryJoineryModal();
+        renderSidebar();
+        bindTabEvents();
+        switchTab('3d', { skipPlattarBootstrap: true });
+
+        if (MODEL_CONTENT && MODEL_CONTENT.metadata && MODEL_CONTENT.metadata.modelName) {
+          document.title = MODEL_CONTENT.metadata.modelName + ' Configurator';
+        }
+
+        recalcPricing();
+        sendConfigToWix();
+
+        scheduleDeferredPlattarInit();
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+
+    })();
+  </script>
+
+</body>

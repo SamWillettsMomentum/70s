@@ -1,0 +1,167 @@
+{
+    "scenes": [
+      {
+        "title": "Compact Harmony",
+        "anchor": "horizontal",
+        "id": "329bc7fb-6c6b-49b8-a4d2-70411e58e9a4",
+        "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4",
+        "configuratorUrl": "https://app.plattar.com/configurator/dist/index.html?sceneId=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4",
+        "sceneproducts": [
+          {
+            "instanceId": "1df22012-2566-4c4f-8e70-45919fe69145",
+            "instanceTitle": "Compact Harmony Interior",
+            "product": {
+              "id": "8c6c67bf-c76b-41f1-ac5d-b07b7c5be424",
+              "title": "Compact Harmony Interior",
+              "sku": null
+            },
+            "variations": [
+              {
+                "id": "d8247ddd-3195-425a-aec2-0cad6446b98e",
+                "title": "Interior",
+                "sku": null,
+                "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=d8247ddd-3195-425a-aec2-0cad6446b98e",
+                "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=d8247ddd-3195-425a-aec2-0cad6446b98e"
+              }
+            ]
+          },
+          {
+            "instanceId": "3aaf8422-7559-4bea-87f5-cdb5c1dc3670",
+            "instanceTitle": "Compact Harmony Heating",
+            "product": {
+              "id": "a7f16269-345c-436e-8de4-120a04f32a85",
+              "title": "Compact Harmony Heating",
+              "sku": null
+            },
+            "variations": [
+              {
+                "id": "13a371a5-be8a-4bf2-b439-436ddc931e62",
+                "title": "Heatpump",
+                "sku": null,
+                "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=13a371a5-be8a-4bf2-b439-436ddc931e62",
+                "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=13a371a5-be8a-4bf2-b439-436ddc931e62"
+              },
+              {
+                "id": "19f00272-4a4e-4feb-aa9d-cb311b6339e3",
+                "title": "None",
+                "sku": null,
+                "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=19f00272-4a4e-4feb-aa9d-cb311b6339e3",
+                "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=19f00272-4a4e-4feb-aa9d-cb311b6339e3"
+              },
+              {
+                "id": "f1c36add-4643-4143-a00a-a9c95989bc87",
+                "title": "Fire + Heatpump",
+                "sku": null,
+                "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=f1c36add-4643-4143-a00a-a9c95989bc87",
+                "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=f1c36add-4643-4143-a00a-a9c95989bc87"
+              },
+              {
+                "id": "fef0fc85-4f40-4365-8434-0fa4adeffe50",
+                "title": "Fireplace",
+                "sku": null,
+                "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=fef0fc85-4f40-4365-8434-0fa4adeffe50",
+                "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=fef0fc85-4f40-4365-8434-0fa4adeffe50"
+              }
+            ]
+          },
+          {
+            "instanceId": "72fbb916-7aa1-493a-929d-256129109485",
+            "instanceTitle": "Compact Harmony Hotwater",
+            "product": {
+              "id": "b1a3d668-a709-4608-94d2-6cec5ddf52e5",
+              "title": "Compact Harmony Hotwater",
+              "sku": null
+            },
+            "variations": [
+              {
+                "id": "ac662300-f395-4651-bda9-cf6c5107c30d",
+                "title": "None",
+                "sku": null,
+                "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=ac662300-f395-4651-bda9-cf6c5107c30d",
+                "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=ac662300-f395-4651-bda9-cf6c5107c30d"
+              },
+              {
+                "id": "b825cda9-7151-4f96-8928-ed8303642410",
+                "title": "Hot Water",
+                "sku": null,
+                "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=b825cda9-7151-4f96-8928-ed8303642410",
+                "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=b825cda9-7151-4f96-8928-ed8303642410"
+              },
+              {
+                "id": "ec702fcf-d378-40df-93e5-c2c83aa49be8",
+                "title": "Gas Infinity",
+                "sku": null,
+                "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=ec702fcf-d378-40df-93e5-c2c83aa49be8",
+                "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=ec702fcf-d378-40df-93e5-c2c83aa49be8"
+              }
+            ]
+          },
+          {
+            "instanceId": "7d352cfb-9737-4b5b-8d5d-d8c77d76957a",
+            "instanceTitle": "Compact Harmony Exterior",
+            "product": {
+              "id": "8d859a25-0e4c-4ea8-a207-934544ff3598",
+              "title": "Compact Harmony Exterior",
+              "sku": null
+            },
+            "variations": [
+              {
+                "id": "16211948-2c48-46cc-9dfa-6f71bb3c1b0c",
+                "title": "Sandstone",
+                "sku": null,
+                "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=16211948-2c48-46cc-9dfa-6f71bb3c1b0c",
+                "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=16211948-2c48-46cc-9dfa-6f71bb3c1b0c"
+              },
+              {
+                "id": "2ff8f6f0-86c7-4703-8f89-f6bf748c742c",
+                "title": "Corten",
+                "sku": null,
+                "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=2ff8f6f0-86c7-4703-8f89-f6bf748c742c",
+                "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=2ff8f6f0-86c7-4703-8f89-f6bf748c742c"
+              },
+              {
+                "id": "3c0b6103-9f7b-42da-8057-ee0b1197b0fe",
+                "title": "Ebony",
+                "sku": null,
+                "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=3c0b6103-9f7b-42da-8057-ee0b1197b0fe",
+                "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=3c0b6103-9f7b-42da-8057-ee0b1197b0fe"
+              },
+              {
+                "id": "4b28382f-e3de-4127-8466-5ad45ca5d4a8",
+                "title": "Grey Friars",
+                "sku": null,
+                "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=4b28382f-e3de-4127-8466-5ad45ca5d4a8",
+                "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=4b28382f-e3de-4127-8466-5ad45ca5d4a8"
+              }
+            ]
+          },
+          {
+            "instanceId": "c37faaa0-9f42-457f-b17d-62bf09be8b28",
+            "instanceTitle": "Compact Harmony Solar",
+            "product": {
+              "id": "91711204-2e08-46b6-8785-ae39b92d29b1",
+              "title": "Compact Harmony Solar",
+              "sku": null
+            },
+            "variations": [
+              {
+                "id": "0bbd704d-4889-4ac7-9c72-27b2ec8a274b",
+                "title": "None",
+                "sku": null,
+                "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=0bbd704d-4889-4ac7-9c72-27b2ec8a274b",
+                "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=0bbd704d-4889-4ac7-9c72-27b2ec8a274b"
+              },
+              {
+                "id": "ad83addb-d67e-4599-a98e-94f2fb1947b4",
+                "title": "Solar",
+                "sku": null,
+                "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=ad83addb-d67e-4599-a98e-94f2fb1947b4",
+                "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=329bc7fb-6c6b-49b8-a4d2-70411e58e9a4&variation_id=ad83addb-d67e-4599-a98e-94f2fb1947b4"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "products": []
+  }

@@ -1,0 +1,223 @@
+{
+    "scenes": [
+      {
+        "title": "Straight Elegance",
+        "anchor": "horizontal",
+        "id": "8f1ee234-2179-4e79-b60e-ba21c3e98ff8",
+        "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=8f1ee234-2179-4e79-b60e-ba21c3e98ff8",
+        "configuratorUrl": "https://app.plattar.com/configurator/dist/index.html?sceneId=8f1ee234-2179-4e79-b60e-ba21c3e98ff8",
+        "sceneproducts": [
+          {
+            "instanceId": "142859c0-9b94-479c-aae4-bdc5a7f749d1",
+            "instanceTitle": "Straight Elegance Hotwater",
+            "product": {
+              "id": "cbf90512-a674-4903-a866-7561d1fc57a1",
+              "title": "Straight Elegance Hotwater",
+              "sku": null
+            },
+            "variations": [
+              {
+                "id": "73b53126-c575-40b9-a203-e3bd7fb9577d",
+                "title": "None",
+                "sku": null,
+                "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=8f1ee234-2179-4e79-b60e-ba21c3e98ff8&variation_id=73b53126-c575-40b9-a203-e3bd7fb9577d",
+                "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=8f1ee234-2179-4e79-b60e-ba21c3e98ff8&variation_id=73b53126-c575-40b9-a203-e3bd7fb9577d"
+              },
+              {
+                "id": "9a9069dd-4116-4dc0-8115-53d895f0e0d7",
+                "title": "Gas Infinity",
+                "sku": null,
+                "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=8f1ee234-2179-4e79-b60e-ba21c3e98ff8&variation_id=9a9069dd-4116-4dc0-8115-53d895f0e0d7",
+                "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=8f1ee234-2179-4e79-b60e-ba21c3e98ff8&variation_id=9a9069dd-4116-4dc0-8115-53d895f0e0d7"
+              },
+              {
+                "id": "ccfb7989-b8d6-4e39-a3ba-f1e24209cbcb",
+                "title": "Hot Water",
+                "sku": null,
+                "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=8f1ee234-2179-4e79-b60e-ba21c3e98ff8&variation_id=ccfb7989-b8d6-4e39-a3ba-f1e24209cbcb",
+                "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=8f1ee234-2179-4e79-b60e-ba21c3e98ff8&variation_id=ccfb7989-b8d6-4e39-a3ba-f1e24209cbcb"
+              }
+            ]
+          },
+          {
+            "instanceId": "1a44b7b5-ccc6-4150-9c41-8f3e34a7ab66",
+            "instanceTitle": "Straight Elegance Exterior",
+            "product": {
+              "id": "ed21b467-e97d-4249-b614-8cf93ea68bfa",
+              "title": "Straight Elegance Exterior",
+              "sku": null
+            },
+            "variations": [
+              {
+                "id": "60421800-78f1-4e23-88cd-0a8964673441",
+                "title": "Ebony",
+                "sku": null,
+                "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=8f1ee234-2179-4e79-b60e-ba21c3e98ff8&variation_id=60421800-78f1-4e23-88cd-0a8964673441",
+                "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=8f1ee234-2179-4e79-b60e-ba21c3e98ff8&variation_id=60421800-78f1-4e23-88cd-0a8964673441"
+              },
+              {
+                "id": "730b805f-4dda-4243-a4c2-052c0b701650",
+                "title": "Sandstone",
+                "sku": null,
+                "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=8f1ee234-2179-4e79-b60e-ba21c3e98ff8&variation_id=730b805f-4dda-4243-a4c2-052c0b701650",
+                "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=8f1ee234-2179-4e79-b60e-ba21c3e98ff8&variation_id=730b805f-4dda-4243-a4c2-052c0b701650"
+              },
+              {
+                "id": "9b2e580a-016b-4054-81bc-4283c8d815e1",
+                "title": "Corten",
+                "sku": null,
+                "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=8f1ee234-2179-4e79-b60e-ba21c3e98ff8&variation_id=9b2e580a-016b-4054-81bc-4283c8d815e1",
+                "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=8f1ee234-2179-4e79-b60e-ba21c3e98ff8&variation_id=9b2e580a-016b-4054-81bc-4283c8d815e1"
+              },
+              {
+                "id": "dab1c680-02c0-4671-b6d5-dabf0797eba6",
+                "title": "Grey Friars",
+                "sku": null,
+                "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=8f1ee234-2179-4e79-b60e-ba21c3e98ff8&variation_id=dab1c680-02c0-4671-b6d5-dabf0797eba6",
+                "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=8f1ee234-2179-4e79-b60e-ba21c3e98ff8&variation_id=dab1c680-02c0-4671-b6d5-dabf0797eba6"
+              }
+            ]
+          },
+          {
+            "instanceId": "6933f325-0663-4435-a572-3b665e63e28a",
+            "instanceTitle": "Straight Elegance Solar",
+            "product": {
+              "id": "abf6c808-9129-4b46-8997-6e838f06b2f0",
+              "title": "Straight Elegance Solar",
+              "sku": null
+            },
+            "variations": [
+              {
+                "id": "42514748-ea36-4991-991b-1a0ad9ca9ce0",
+                "title": "Solar",
+                "sku": null,
+                "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=8f1ee234-2179-4e79-b60e-ba21c3e98ff8&variation_id=42514748-ea36-4991-991b-1a0ad9ca9ce0",
+                "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=8f1ee234-2179-4e79-b60e-ba21c3e98ff8&variation_id=42514748-ea36-4991-991b-1a0ad9ca9ce0"
+              },
+              {
+                "id": "f59ff0c2-d79d-40b9-9223-d392f2c5195b",
+                "title": "None",
+                "sku": null,
+                "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=8f1ee234-2179-4e79-b60e-ba21c3e98ff8&variation_id=f59ff0c2-d79d-40b9-9223-d392f2c5195b",
+                "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=8f1ee234-2179-4e79-b60e-ba21c3e98ff8&variation_id=f59ff0c2-d79d-40b9-9223-d392f2c5195b"
+              }
+            ]
+          },
+          {
+            "instanceId": "8d018853-4ff5-4cd0-9421-541aed8f4498",
+            "instanceTitle": "Straight Elegance Interior",
+            "product": {
+              "id": "0b72fd33-627f-4a4c-8888-580db11c4098",
+              "title": "Straight Elegance Interior",
+              "sku": null
+            },
+            "variations": [
+              {
+                "id": "34ad2288-5e1e-4eb3-bfce-cdf74c08dccf",
+                "title": "Interior",
+                "sku": null,
+                "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=8f1ee234-2179-4e79-b60e-ba21c3e98ff8&variation_id=34ad2288-5e1e-4eb3-bfce-cdf74c08dccf",
+                "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=8f1ee234-2179-4e79-b60e-ba21c3e98ff8&variation_id=34ad2288-5e1e-4eb3-bfce-cdf74c08dccf"
+              }
+            ]
+          },
+          {
+            "instanceId": "df474226-5411-4643-a60a-b7894ef953de",
+            "instanceTitle": "Straight Elegance Heating",
+            "product": {
+              "id": "94dbb903-af0f-4bd4-a1b7-7199cadef643",
+              "title": "Straight Elegance Heating",
+              "sku": null
+            },
+            "variations": [
+              {
+                "id": "2e886e3d-5c83-4343-abe7-e029b2db7ac9",
+                "title": "Fire + Heatpump",
+                "sku": null,
+                "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=8f1ee234-2179-4e79-b60e-ba21c3e98ff8&variation_id=2e886e3d-5c83-4343-abe7-e029b2db7ac9",
+                "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=8f1ee234-2179-4e79-b60e-ba21c3e98ff8&variation_id=2e886e3d-5c83-4343-abe7-e029b2db7ac9"
+              },
+              {
+                "id": "66736fcc-99ac-4213-86c0-c4c2832ad574",
+                "title": "Fireplace",
+                "sku": null,
+                "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=8f1ee234-2179-4e79-b60e-ba21c3e98ff8&variation_id=66736fcc-99ac-4213-86c0-c4c2832ad574",
+                "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=8f1ee234-2179-4e79-b60e-ba21c3e98ff8&variation_id=66736fcc-99ac-4213-86c0-c4c2832ad574"
+              },
+              {
+                "id": "7773aeb4-9abf-47e1-981b-e0898009dd5e",
+                "title": "Heatpump",
+                "sku": null,
+                "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=8f1ee234-2179-4e79-b60e-ba21c3e98ff8&variation_id=7773aeb4-9abf-47e1-981b-e0898009dd5e",
+                "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=8f1ee234-2179-4e79-b60e-ba21c3e98ff8&variation_id=7773aeb4-9abf-47e1-981b-e0898009dd5e"
+              },
+              {
+                "id": "e5f029c4-9f08-4ed8-adb0-e53ab25f598b",
+                "title": "None",
+                "sku": null,
+                "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=8f1ee234-2179-4e79-b60e-ba21c3e98ff8&variation_id=e5f029c4-9f08-4ed8-adb0-e53ab25f598b",
+                "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=8f1ee234-2179-4e79-b60e-ba21c3e98ff8&variation_id=e5f029c4-9f08-4ed8-adb0-e53ab25f598b"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "products": [
+      {
+        "title": "Straight Elegance Interior",
+        "id": "0b72fd33-627f-4a4c-8888-580db11c4098",
+        "sceneId": "baff31ff-3228-483c-bcee-957cb188936d",
+        "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=baff31ff-3228-483c-bcee-957cb188936d",
+        "configuratorUrl": "https://app.plattar.com/configurator/dist/index.html?sceneId=baff31ff-3228-483c-bcee-957cb188936d",
+        "sku": null,
+        "variations": [
+          {
+            "id": "34ad2288-5e1e-4eb3-bfce-cdf74c08dccf",
+            "title": "Interior",
+            "sku": null,
+            "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=baff31ff-3228-483c-bcee-957cb188936d&variationId=34ad2288-5e1e-4eb3-bfce-cdf74c08dccf",
+            "launcherUrl": "https://app.plattar.com/renderer/launcher.html?product_id=0b72fd33-627f-4a4c-8888-580db11c4098&variationId=34ad2288-5e1e-4eb3-bfce-cdf74c08dccf"
+          }
+        ]
+      },
+      {
+        "title": "Straight Elegance Exterior",
+        "id": "ed21b467-e97d-4249-b614-8cf93ea68bfa",
+        "sceneId": "c499f2b5-35b9-401f-9d32-b9504b6c78d4",
+        "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=c499f2b5-35b9-401f-9d32-b9504b6c78d4",
+        "configuratorUrl": "https://app.plattar.com/configurator/dist/index.html?sceneId=c499f2b5-35b9-401f-9d32-b9504b6c78d4",
+        "sku": null,
+        "variations": [
+          {
+            "id": "60421800-78f1-4e23-88cd-0a8964673441",
+            "title": "Ebony",
+            "sku": null,
+            "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=c499f2b5-35b9-401f-9d32-b9504b6c78d4&variationId=60421800-78f1-4e23-88cd-0a8964673441",
+            "launcherUrl": "https://app.plattar.com/renderer/launcher.html?product_id=ed21b467-e97d-4249-b614-8cf93ea68bfa&variationId=60421800-78f1-4e23-88cd-0a8964673441"
+          },
+          {
+            "id": "730b805f-4dda-4243-a4c2-052c0b701650",
+            "title": "Sandstone",
+            "sku": null,
+            "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=c499f2b5-35b9-401f-9d32-b9504b6c78d4&variationId=730b805f-4dda-4243-a4c2-052c0b701650",
+            "launcherUrl": "https://app.plattar.com/renderer/launcher.html?product_id=ed21b467-e97d-4249-b614-8cf93ea68bfa&variationId=730b805f-4dda-4243-a4c2-052c0b701650"
+          },
+          {
+            "id": "9b2e580a-016b-4054-81bc-4283c8d815e1",
+            "title": "Corten",
+            "sku": null,
+            "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=c499f2b5-35b9-401f-9d32-b9504b6c78d4&variationId=9b2e580a-016b-4054-81bc-4283c8d815e1",
+            "launcherUrl": "https://app.plattar.com/renderer/launcher.html?product_id=ed21b467-e97d-4249-b614-8cf93ea68bfa&variationId=9b2e580a-016b-4054-81bc-4283c8d815e1"
+          },
+          {
+            "id": "dab1c680-02c0-4671-b6d5-dabf0797eba6",
+            "title": "Grey Friars",
+            "sku": null,
+            "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=c499f2b5-35b9-401f-9d32-b9504b6c78d4&variationId=dab1c680-02c0-4671-b6d5-dabf0797eba6",
+            "launcherUrl": "https://app.plattar.com/renderer/launcher.html?product_id=ed21b467-e97d-4249-b614-8cf93ea68bfa&variationId=dab1c680-02c0-4671-b6d5-dabf0797eba6"
+          }
+        ]
+      }
+    ]
+  }

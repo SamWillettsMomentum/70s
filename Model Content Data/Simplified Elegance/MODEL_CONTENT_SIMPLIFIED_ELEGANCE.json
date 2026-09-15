@@ -1,0 +1,618 @@
+{
+  "metadata": {
+    "modelName": "Simplified Elegance",
+    "postMessageType": "configurator-config"
+  },
+  "pricing": {
+    "product": {
+      "name": "Simplified Elegance",
+      "basePrice": 145000,
+      "currency": "NZD"
+    },
+    "sidebarGroups": [
+      {
+        "id": "exterior",
+        "title": "Exterior",
+        "categories": [
+          "Exterior Cladding"
+        ]
+      },
+      {
+        "id": "interior_finishes",
+        "title": "Interior Finishes",
+        "categories": [
+          "Interior Lining",
+          "Flooring",
+          "Cabinets"
+        ]
+      },
+      {
+        "id": "storage_joinery",
+        "title": "Storage & Joinery",
+        "categories": [
+          "Laundry Joinery",
+          "Bedroom Wardrobe"
+        ]
+      },
+      {
+        "id": "comfort_energy",
+        "title": "Comfort & Energy",
+        "categories": [
+          "Fireplace",
+          "Heatpump",
+          "Water Heating",
+          "Solar"
+        ]
+      }
+    ],
+    "options": [
+      {
+        "category": "Exterior Cladding",
+        "type": "single_select",
+        "display": "box_with_image",
+        "choices": [
+          {
+            "id": "corrugated_iron_grey_friars",
+            "label": "Corrugated Iron - Grey Friars",
+            "price": 0
+          },
+          {
+            "id": "corrugated_iron_ebony",
+            "label": "Corrugated Iron - Ebony",
+            "price": 0
+          },
+          {
+            "id": "corrugated_iron_sandstone_grey",
+            "label": "Corrugated Iron - Sandstone Grey",
+            "price": 0
+          },
+          {
+            "id": "seemlok_printed_corten_steel_corrugated_iron_ebony",
+            "label": "UniCote LUX - Printed Corten Red/Corrugated Iron - Ebony",
+            "price": 0
+          }
+        ]
+      },
+      {
+        "category": "Interior Lining",
+        "type": "single_select",
+        "display": "box_with_image",
+        "choices": [
+          {
+            "id": "white_gib_redline_ply_lounge_ceiling",
+            "label": "White Gib / Redline Ply Lounge Ceiling",
+            "price": 0
+          },
+          {
+            "id": "white_gib_blondline_ply_lounge_ceiling",
+            "label": "White Gib / Blondline Ply Lounge Ceiling",
+            "price": 0
+          },
+          {
+            "id": "redline_ply_everywhere",
+            "label": "Redline Ply Everywhere",
+            "price": 0
+          },
+          {
+            "id": "blondline_ply_everywhere",
+            "label": "Blondline Ply Everywhere",
+            "price": 0
+          }
+        ]
+      },
+      {
+        "category": "Flooring",
+        "type": "single_select",
+        "display": "box_with_image",
+        "choices": [
+          {
+            "id": "none_flooring",
+            "label": "Owner Supplied Flooring",
+            "price": 0
+          },
+          {
+            "id": "smooth_oak_high_noon",
+            "label": "Premium Hush - Smooth Oak High Noon",
+            "price": 8165
+          },
+          {
+            "id": "turin_oak_slacked_oyster",
+            "label": "Premium Hush - Turin Oak Slacked Oyster",
+            "price": 8165
+          },
+          {
+            "id": "swiss_oak_burn",
+            "label": "Premium Hush - Swiss Oak Burn",
+            "price": 8165
+          }
+        ]
+      },
+      {
+        "category": "Cabinets",
+        "type": "single_select",
+        "display": "box_with_image",
+        "choices": [
+          {
+            "id": "cabinets_bullet",
+            "label": "Bullet",
+            "price": 0,
+            "image": "https://static.wixstatic.com/media/15e926_6feced8eb065485d97537a3f96dd5437~mv2.jpg"
+          },
+          {
+            "id": "cabinets_green_slate",
+            "label": "Green Slate",
+            "price": 0,
+            "image": "https://static.wixstatic.com/media/15e926_6feced8eb065485d97537a3f96dd5437~mv2.jpg"
+          },
+          {
+            "id": "cabinets_white",
+            "label": "White",
+            "price": 0,
+            "image": "https://static.wixstatic.com/media/15e926_6feced8eb065485d97537a3f96dd5437~mv2.jpg"
+          }
+        ]
+      },
+      {
+        "category": "Fireplace",
+        "type": "single_select",
+        "display": "box",
+        "choices": [
+          {
+            "id": "none_fireplace",
+            "label": "No Fireplace",
+            "price": 0
+          },
+          {
+            "id": "fireplace_added",
+            "label": "Freestanding Wood Fire",
+            "price": 2198.32
+          }
+        ]
+      },
+      {
+        "category": "Heatpump",
+        "type": "single_select",
+        "display": "box",
+        "choices": [
+          {
+            "id": "none_heatpump",
+            "label": "No Heat Pump",
+            "price": 0
+          },
+          {
+            "id": "heatpump_added",
+            "label": "Comfort Wall Mounted Heat Pump",
+            "price": 2601.99
+          }
+        ]
+      },
+      {
+        "category": "Water Heating",
+        "type": "single_select",
+        "display": "box",
+        "choices": [
+          {
+            "id": "no_water_heating",
+            "label": "No Water Heating",
+            "price": 0
+          },
+          {
+            "id": "gas_kelifont",
+            "label": "Infinity A24 External LPG",
+            "price": 2004.28
+          },
+          {
+            "id": "electric_cylinder",
+            "label": "Ambipower Hot Water Heat Pump",
+            "price": 3799.14
+          }
+        ]
+      },
+      {
+        "category": "Laundry Joinery",
+        "type": "single_select",
+        "display": "box",
+        "choices": [
+          {
+            "id": "none_laundry",
+            "label": "No Laundry Joinery",
+            "price": 0
+          },
+          {
+            "id": "1_laundry_joinery",
+            "label": "Laundry Joinery Included",
+            "price": 4800
+          }
+        ]
+      },
+      {
+        "category": "Bedroom Wardrobe",
+        "type": "single_select",
+        "display": "box",
+        "choices": [
+          {
+            "id": "none_bedroom_wardrobe",
+            "label": "No Bedroom Wardrobes",
+            "price": 0
+          },
+          {
+            "id": "bedroom_wardrobe_1x",
+            "label": "1x Bedroom Wardrobe",
+            "price": 2500
+          },
+          {
+            "id": "bedroom_wardrobe_2x",
+            "label": "2x Bedroom Wardrobes",
+            "price": 5000
+          }
+        ]
+      },
+      {
+        "category": "Solar",
+        "type": "single_select",
+        "display": "box",
+        "choices": [
+          {
+            "id": "none_solar",
+            "label": "No Solar",
+            "price": 0
+          },
+          {
+            "id": "solar_added",
+            "label": "4.95 kW Solar",
+            "price": 17883.7
+          }
+        ]
+      }
+    ]
+  },
+  "plattar": {
+    "sceneId": "8bdec968-20b5-4c51-8f2a-ed08ac7e4aaa",
+    "idRegistry": {
+      "scenes": [
+        {
+          "title": "Simplified Elegance",
+          "anchor": "horizontal",
+          "id": "8bdec968-20b5-4c51-8f2a-ed08ac7e4aaa",
+          "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=8bdec968-20b5-4c51-8f2a-ed08ac7e4aaa",
+          "configuratorUrl": "https://app.plattar.com/configurator/dist/index.html?sceneId=8bdec968-20b5-4c51-8f2a-ed08ac7e4aaa",
+          "sceneproducts": [
+            {
+              "instanceId": "1ff1d2a6-0020-46eb-b792-83a0a895c095",
+              "instanceTitle": "Simplified Elegance Solar",
+              "product": {
+                "id": "84aa466c-a0e5-4b44-9349-eb3eb09865b3",
+                "title": "Simplified Elegance Solar",
+                "sku": null
+              },
+              "variations": [
+                {
+                  "id": "b5da7340-0707-49c0-bf7d-ca7093651120",
+                  "title": "Solar",
+                  "sku": null,
+                  "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=8bdec968-20b5-4c51-8f2a-ed08ac7e4aaa&variation_id=b5da7340-0707-49c0-bf7d-ca7093651120",
+                  "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=8bdec968-20b5-4c51-8f2a-ed08ac7e4aaa&variation_id=b5da7340-0707-49c0-bf7d-ca7093651120"
+                },
+                {
+                  "id": "c6715993-b042-4e5e-98a3-419ae4a2d887",
+                  "title": "None",
+                  "sku": null,
+                  "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=8bdec968-20b5-4c51-8f2a-ed08ac7e4aaa&variation_id=c6715993-b042-4e5e-98a3-419ae4a2d887",
+                  "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=8bdec968-20b5-4c51-8f2a-ed08ac7e4aaa&variation_id=c6715993-b042-4e5e-98a3-419ae4a2d887"
+                }
+              ]
+            },
+            {
+              "instanceId": "3990c5c2-018a-4790-8617-427d55c5da90",
+              "instanceTitle": "Simplified Elegance Interior",
+              "product": {
+                "id": "f878d45f-dd84-4afb-9b6f-6f03d2918f26",
+                "title": "Simplified Elegance Interior",
+                "sku": null
+              },
+              "variations": [
+                {
+                  "id": "377b4765-d8b6-4cff-9e7e-a0717ae61a05",
+                  "title": "Interior",
+                  "sku": null,
+                  "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=8bdec968-20b5-4c51-8f2a-ed08ac7e4aaa&variation_id=377b4765-d8b6-4cff-9e7e-a0717ae61a05",
+                  "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=8bdec968-20b5-4c51-8f2a-ed08ac7e4aaa&variation_id=377b4765-d8b6-4cff-9e7e-a0717ae61a05"
+                }
+              ]
+            },
+            {
+              "instanceId": "43688cec-25d6-4d58-afdb-35418735b4de",
+              "instanceTitle": "Simplified Elegance Hotwater",
+              "product": {
+                "id": "05af08c3-d50a-4bd1-b37c-902dc132f1fb",
+                "title": "Simplified Elegance Hotwater",
+                "sku": null
+              },
+              "variations": [
+                {
+                  "id": "1063dc85-c8bb-453b-8a86-83b61a518545",
+                  "title": "Gas Infinity",
+                  "sku": null,
+                  "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=8bdec968-20b5-4c51-8f2a-ed08ac7e4aaa&variation_id=1063dc85-c8bb-453b-8a86-83b61a518545",
+                  "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=8bdec968-20b5-4c51-8f2a-ed08ac7e4aaa&variation_id=1063dc85-c8bb-453b-8a86-83b61a518545"
+                },
+                {
+                  "id": "7b876558-f586-417a-b39b-5dee173156a6",
+                  "title": "Hot Water",
+                  "sku": null,
+                  "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=8bdec968-20b5-4c51-8f2a-ed08ac7e4aaa&variation_id=7b876558-f586-417a-b39b-5dee173156a6",
+                  "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=8bdec968-20b5-4c51-8f2a-ed08ac7e4aaa&variation_id=7b876558-f586-417a-b39b-5dee173156a6"
+                },
+                {
+                  "id": "b42a2d2b-5828-4238-8f0e-b697498ac4aa",
+                  "title": "None",
+                  "sku": null,
+                  "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=8bdec968-20b5-4c51-8f2a-ed08ac7e4aaa&variation_id=b42a2d2b-5828-4238-8f0e-b697498ac4aa",
+                  "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=8bdec968-20b5-4c51-8f2a-ed08ac7e4aaa&variation_id=b42a2d2b-5828-4238-8f0e-b697498ac4aa"
+                }
+              ]
+            },
+            {
+              "instanceId": "9ad1ef76-f69f-4d06-ba38-88182f789628",
+              "instanceTitle": "Simplified Elegance Heating",
+              "product": {
+                "id": "5dfa3f98-4ac8-4365-b007-fa9540112d6b",
+                "title": "Simplified Elegance Heating",
+                "sku": null
+              },
+              "variations": [
+                {
+                  "id": "810080e3-f0d3-495a-a439-b3448c0cb79b",
+                  "title": "Fire + Heatpump",
+                  "sku": null,
+                  "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=8bdec968-20b5-4c51-8f2a-ed08ac7e4aaa&variation_id=810080e3-f0d3-495a-a439-b3448c0cb79b",
+                  "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=8bdec968-20b5-4c51-8f2a-ed08ac7e4aaa&variation_id=810080e3-f0d3-495a-a439-b3448c0cb79b"
+                },
+                {
+                  "id": "8eeb779e-405d-4f49-a78e-5fd596654598",
+                  "title": "Fire Place",
+                  "sku": null,
+                  "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=8bdec968-20b5-4c51-8f2a-ed08ac7e4aaa&variation_id=8eeb779e-405d-4f49-a78e-5fd596654598",
+                  "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=8bdec968-20b5-4c51-8f2a-ed08ac7e4aaa&variation_id=8eeb779e-405d-4f49-a78e-5fd596654598"
+                },
+                {
+                  "id": "a2ca5745-a4b6-4000-996a-482b3939bcdd",
+                  "title": "None",
+                  "sku": null,
+                  "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=8bdec968-20b5-4c51-8f2a-ed08ac7e4aaa&variation_id=a2ca5745-a4b6-4000-996a-482b3939bcdd",
+                  "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=8bdec968-20b5-4c51-8f2a-ed08ac7e4aaa&variation_id=a2ca5745-a4b6-4000-996a-482b3939bcdd"
+                },
+                {
+                  "id": "f2bde738-9837-4a3b-9cc3-9e3049f0f423",
+                  "title": "Heatpump",
+                  "sku": null,
+                  "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=8bdec968-20b5-4c51-8f2a-ed08ac7e4aaa&variation_id=f2bde738-9837-4a3b-9cc3-9e3049f0f423",
+                  "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=8bdec968-20b5-4c51-8f2a-ed08ac7e4aaa&variation_id=f2bde738-9837-4a3b-9cc3-9e3049f0f423"
+                }
+              ]
+            },
+            {
+              "instanceId": "d5bbf68e-6b61-459d-8a5f-b794dfbb5cfc",
+              "instanceTitle": "Simplified Elegance Exterior",
+              "product": {
+                "id": "a1be6318-16ef-411b-b0cb-03ea62f059b8",
+                "title": "Simplified Elegance Exterior",
+                "sku": null
+              },
+              "variations": [
+                {
+                  "id": "3f057d99-ed3c-47df-86c2-23c73f592071",
+                  "title": "Sandstone",
+                  "sku": null,
+                  "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=8bdec968-20b5-4c51-8f2a-ed08ac7e4aaa&variation_id=3f057d99-ed3c-47df-86c2-23c73f592071",
+                  "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=8bdec968-20b5-4c51-8f2a-ed08ac7e4aaa&variation_id=3f057d99-ed3c-47df-86c2-23c73f592071"
+                },
+                {
+                  "id": "834b3d37-c97b-481e-b124-29ea42026d88",
+                  "title": "Corten",
+                  "sku": null,
+                  "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=8bdec968-20b5-4c51-8f2a-ed08ac7e4aaa&variation_id=834b3d37-c97b-481e-b124-29ea42026d88",
+                  "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=8bdec968-20b5-4c51-8f2a-ed08ac7e4aaa&variation_id=834b3d37-c97b-481e-b124-29ea42026d88"
+                },
+                {
+                  "id": "ba66ef58-7bd4-450e-9d99-ef0d4c4412ac",
+                  "title": "GreyFriras",
+                  "sku": null,
+                  "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=8bdec968-20b5-4c51-8f2a-ed08ac7e4aaa&variation_id=ba66ef58-7bd4-450e-9d99-ef0d4c4412ac",
+                  "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=8bdec968-20b5-4c51-8f2a-ed08ac7e4aaa&variation_id=ba66ef58-7bd4-450e-9d99-ef0d4c4412ac"
+                },
+                {
+                  "id": "d8b28b6d-27cb-48aa-808d-abc2113bad6c",
+                  "title": "Ebony",
+                  "sku": null,
+                  "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=8bdec968-20b5-4c51-8f2a-ed08ac7e4aaa&variation_id=d8b28b6d-27cb-48aa-808d-abc2113bad6c",
+                  "launcherUrl": "https://app.plattar.com/renderer/launcher.html?scene_id=8bdec968-20b5-4c51-8f2a-ed08ac7e4aaa&variation_id=d8b28b6d-27cb-48aa-808d-abc2113bad6c"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "products": [
+        {
+          "title": "Simplified Elegance Exterior",
+          "id": "a1be6318-16ef-411b-b0cb-03ea62f059b8",
+          "sceneId": "129920f8-80ce-43d0-be95-ef73066aebf5",
+          "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=129920f8-80ce-43d0-be95-ef73066aebf5",
+          "configuratorUrl": "https://app.plattar.com/configurator/dist/index.html?sceneId=129920f8-80ce-43d0-be95-ef73066aebf5",
+          "sku": null,
+          "variations": [
+            {
+              "id": "3f057d99-ed3c-47df-86c2-23c73f592071",
+              "title": "Sandstone",
+              "sku": null,
+              "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=129920f8-80ce-43d0-be95-ef73066aebf5&variationId=3f057d99-ed3c-47df-86c2-23c73f592071",
+              "launcherUrl": "https://app.plattar.com/renderer/launcher.html?product_id=a1be6318-16ef-411b-b0cb-03ea62f059b8&variationId=3f057d99-ed3c-47df-86c2-23c73f592071"
+            },
+            {
+              "id": "834b3d37-c97b-481e-b124-29ea42026d88",
+              "title": "Corten",
+              "sku": null,
+              "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=129920f8-80ce-43d0-be95-ef73066aebf5&variationId=834b3d37-c97b-481e-b124-29ea42026d88",
+              "launcherUrl": "https://app.plattar.com/renderer/launcher.html?product_id=a1be6318-16ef-411b-b0cb-03ea62f059b8&variationId=834b3d37-c97b-481e-b124-29ea42026d88"
+            },
+            {
+              "id": "ba66ef58-7bd4-450e-9d99-ef0d4c4412ac",
+              "title": "GreyFriras",
+              "sku": null,
+              "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=129920f8-80ce-43d0-be95-ef73066aebf5&variationId=ba66ef58-7bd4-450e-9d99-ef0d4c4412ac",
+              "launcherUrl": "https://app.plattar.com/renderer/launcher.html?product_id=a1be6318-16ef-411b-b0cb-03ea62f059b8&variationId=ba66ef58-7bd4-450e-9d99-ef0d4c4412ac"
+            },
+            {
+              "id": "d8b28b6d-27cb-48aa-808d-abc2113bad6c",
+              "title": "Ebony",
+              "sku": null,
+              "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=129920f8-80ce-43d0-be95-ef73066aebf5&variationId=d8b28b6d-27cb-48aa-808d-abc2113bad6c",
+              "launcherUrl": "https://app.plattar.com/renderer/launcher.html?product_id=a1be6318-16ef-411b-b0cb-03ea62f059b8&variationId=d8b28b6d-27cb-48aa-808d-abc2113bad6c"
+            }
+          ]
+        },
+        {
+          "title": "Simplified Elegance Interior",
+          "id": "f878d45f-dd84-4afb-9b6f-6f03d2918f26",
+          "sceneId": "f1d329f8-1053-45ed-82a6-ae2ce81193d7",
+          "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=f1d329f8-1053-45ed-82a6-ae2ce81193d7",
+          "configuratorUrl": "https://app.plattar.com/configurator/dist/index.html?sceneId=f1d329f8-1053-45ed-82a6-ae2ce81193d7",
+          "sku": null,
+          "variations": [
+            {
+              "id": "377b4765-d8b6-4cff-9e7e-a0717ae61a05",
+              "title": "Interior",
+              "sku": null,
+              "previewUrl": "https://app.plattar.com/renderer/configurator.html?scene_id=f1d329f8-1053-45ed-82a6-ae2ce81193d7&variationId=377b4765-d8b6-4cff-9e7e-a0717ae61a05",
+              "launcherUrl": "https://app.plattar.com/renderer/launcher.html?product_id=f878d45f-dd84-4afb-9b6f-6f03d2918f26&variationId=377b4765-d8b6-4cff-9e7e-a0717ae61a05"
+            }
+          ]
+        }
+      ]
+    },
+    "exteriorVariationMap": {
+      "corrugated_iron_grey_friars": "ba66ef58-7bd4-450e-9d99-ef0d4c4412ac",
+      "corrugated_iron_ebony": "d8b28b6d-27cb-48aa-808d-abc2113bad6c",
+      "corrugated_iron_sandstone_grey": "3f057d99-ed3c-47df-86c2-23c73f592071",
+      "seemlok_printed_corten_steel_corrugated_iron_ebony": "834b3d37-c97b-481e-b124-29ea42026d88"
+    },
+    "addOnVariationMap": {
+      "heating": {
+        "firePlusHeatpump": "810080e3-f0d3-495a-a439-b3448c0cb79b",
+        "fireplace": "8eeb779e-405d-4f49-a78e-5fd596654598",
+        "none": "a2ca5745-a4b6-4000-996a-482b3939bcdd",
+        "heatpump": "f2bde738-9837-4a3b-9cc3-9e3049f0f423"
+      },
+      "solar": {
+        "solar": "b5da7340-0707-49c0-bf7d-ca7093651120",
+        "none": "c6715993-b042-4e5e-98a3-419ae4a2d887"
+      },
+      "hotwater": {
+        "gasInfinity": "1063dc85-c8bb-453b-8a86-83b61a518545",
+        "hotWater": "7b876558-f586-417a-b39b-5dee173156a6",
+        "none": "b42a2d2b-5828-4238-8f0e-b697498ac4aa"
+      }
+    }
+  },
+  "images": {
+    "interior": {
+      "living": {
+        "base": "https://static.wixstatic.com/media/15e926_1cef2b64ca624b38b89cf3a89d944a5d~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Gib_Ceiling-Birch_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_1cef2b64ca624b38b89cf3a89d944a5d~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Gib_Ceiling-Birch_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_6b75b0c74bfc42bcbf40e52297432328~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Gib_Ceiling-Birch_Cabinets-White": "https://static.wixstatic.com/media/15e926_15b617f6f6dd4efeb530d04f220c4561~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Gib_Ceiling-Redline_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_a4365d17e6bc4cd385f54ea04206263f~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Gib_Ceiling-Redline_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_cf6c172e14c84b1583cce38822fa47b3~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Gib_Ceiling-Redline_Cabinets-White": "https://static.wixstatic.com/media/15e926_e9437fe981fe44c9bad8ec698738f1f0~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Birch_Ceiling-Birch_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_1848cb446c554f1c8f73ac4c27c836f9~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Birch_Ceiling-Birch_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_f0ef9d6e974d40e2b9659e17a65ed897~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Birch_Ceiling-Birch_Cabinets-White": "https://static.wixstatic.com/media/15e926_0bb9f8af5f51491799fbdb11aae5374b~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Redline_Ceiling-Redline_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_e8e471e5e55c40e59054e15d3e18c57a~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Redline_Ceiling-Redline_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_a336118d92b641d59e92870924004158~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Redline_Ceiling-Redline_Cabinets-White": "https://static.wixstatic.com/media/15e926_e32b8df29a1d43e28c1f29e1e32b3ac9~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Gib_Ceiling-Birch_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_975e551e3cdf4effbb87fdaf3503186c~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Gib_Ceiling-Birch_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_3fceafa21f634bbeb309888c579ac86d~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Gib_Ceiling-Birch_Cabinets-White": "https://static.wixstatic.com/media/15e926_a35d5409c6e1493498cc466c958760ab~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Gib_Ceiling-Redline_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_1f1c484c4d384bb1af56cd2327ad3a2d~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Gib_Ceiling-Redline_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_a149d87bc1424c95a4e022c703c2ec04~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Gib_Ceiling-Redline_Cabinets-White": "https://static.wixstatic.com/media/15e926_d70dc0e07fb54297976e467cfbc5fd6b~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Birch_Ceiling-Birch_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_e13862bfb400461c83382021d50aea0b~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Birch_Ceiling-Birch_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_2b685d166e944c1a974d74c624138f76~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Birch_Ceiling-Birch_Cabinets-White": "https://static.wixstatic.com/media/15e926_90fd0132ff9346da83d7a64ae35a56ad~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Redline_Ceiling-Redline_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_63aa0f872e5147d78dab12f889eab4b3~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Redline_Ceiling-Redline_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_890c1b15b47544b98e1b75662a0ba322~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Redline_Ceiling-Redline_Cabinets-White": "https://static.wixstatic.com/media/15e926_5c9568fe204a4ce5bfe9087b58597167~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Gib_Ceiling-Birch_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_cd0ff44b0b37423ca0d37bbbcc53fcab~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Gib_Ceiling-Birch_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_1d9ff5774dc444c7b56c7091de4f85d4~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Gib_Ceiling-Birch_Cabinets-White": "https://static.wixstatic.com/media/15e926_b80224169ae0418a903f231c3993bad5~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Gib_Ceiling-Redline_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_c25344f4e4b04529bf67fc40bf6f773d~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Gib_Ceiling-Redline_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_855aceaea8634c9fafbd9132a46741c8~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Gib_Ceiling-Redline_Cabinets-White": "https://static.wixstatic.com/media/15e926_845b7c842385409ea8c634d6bcb5f391~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Birch_Ceiling-Birch_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_0968becfc25a413ca3d71f2dfd36bcd4~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Birch_Ceiling-Birch_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_3a3378d8722f449e98700d4477b0d53f~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Birch_Ceiling-Birch_Cabinets-White": "https://static.wixstatic.com/media/15e926_4f18c315510740ee8c504db697ae0b4a~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Redline_Ceiling-Redline_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_83fde770bf37401fb18ca87dab01267c~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Redline_Ceiling-Redline_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_57ef2a8dc6424f429d63bb95318ca5ec~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Redline_Ceiling-Redline_Cabinets-White": "https://static.wixstatic.com/media/15e926_90b1de56b9784b8e8ba4217166fd31a9~mv2.jpg"
+      },
+      "bathroom": {
+        "base": "https://static.wixstatic.com/media/15e926_fc0c7167a3e04b398479932eb8b37674~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Gib_Ceiling-Birch_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_fc0c7167a3e04b398479932eb8b37674~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Gib_Ceiling-Birch_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_4116c42f56644d108c4024aa29e7a166~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Gib_Ceiling-Birch_Cabinets-White": "https://static.wixstatic.com/media/15e926_5bc8b1e63107411099da2522ab4d4f13~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Gib_Ceiling-Redline_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_fc0c7167a3e04b398479932eb8b37674~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Gib_Ceiling-Redline_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_4116c42f56644d108c4024aa29e7a166~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Gib_Ceiling-Redline_Cabinets-White": "https://static.wixstatic.com/media/15e926_5bc8b1e63107411099da2522ab4d4f13~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Birch_Ceiling-Birch_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_000b688226b7460cac2fbc98ea964985~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Birch_Ceiling-Birch_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_48194061d4724e508cb161cd587fec9d~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Birch_Ceiling-Birch_Cabinets-White": "https://static.wixstatic.com/media/15e926_6c544f13795644e894c9c05fe33b9c32~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Redline_Ceiling-Redline_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_5ef56952d1d44eedb44b18cd53775459~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Redline_Ceiling-Redline_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_95f01242a52c4913a98dd9d51be5bfe7~mv2.jpg",
+        "Floor-SmoothOakHighNoon_Walls-Redline_Ceiling-Redline_Cabinets-White": "https://static.wixstatic.com/media/15e926_eae8393548e543cdbe1ee3dcc8265d0d~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Gib_Ceiling-Birch_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_e86c1097b42846618bcab9913ad0ba9e~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Gib_Ceiling-Birch_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_d53da281f3bb4aa79450c85774aebd22~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Gib_Ceiling-Birch_Cabinets-White": "https://static.wixstatic.com/media/15e926_29586c842a5247b9b1799fb5bc8958e0~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Gib_Ceiling-Redline_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_e86c1097b42846618bcab9913ad0ba9e~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Gib_Ceiling-Redline_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_d53da281f3bb4aa79450c85774aebd22~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Gib_Ceiling-Redline_Cabinets-White": "https://static.wixstatic.com/media/15e926_29586c842a5247b9b1799fb5bc8958e0~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Birch_Ceiling-Birch_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_0ca8d69384f146f88d07c862ccaa9a2c~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Birch_Ceiling-Birch_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_48194061d4724e508cb161cd587fec9d~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Birch_Ceiling-Birch_Cabinets-White": "https://static.wixstatic.com/media/15e926_6c544f13795644e894c9c05fe33b9c32~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Redline_Ceiling-Redline_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_da1dd4cf17e9433f80ea5b865868cdbf~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Redline_Ceiling-Redline_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_d11621539aaf4f0d92d511bda8156d6b~mv2.jpg",
+        "Floor-SwissOakBern_Walls-Redline_Ceiling-Redline_Cabinets-White": "https://static.wixstatic.com/media/15e926_88f4290a888b445898e602da026ad4da~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Gib_Ceiling-Birch_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_f8a7421001f44d5e86f8c603c328f25a~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Gib_Ceiling-Birch_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_4bf4ff5e071248dc85c1c20d8ab8cdbd~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Gib_Ceiling-Birch_Cabinets-White": "https://static.wixstatic.com/media/15e926_3a85365d0c2c4d308fc7077c995982d5~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Gib_Ceiling-Redline_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_f8a7421001f44d5e86f8c603c328f25a~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Gib_Ceiling-Redline_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_4bf4ff5e071248dc85c1c20d8ab8cdbd~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Gib_Ceiling-Redline_Cabinets-White": "https://static.wixstatic.com/media/15e926_3a85365d0c2c4d308fc7077c995982d5~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Birch_Ceiling-Birch_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_173972e529e442eb998a4e00f8287bfc~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Birch_Ceiling-Birch_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_48194061d4724e508cb161cd587fec9d~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Birch_Ceiling-Birch_Cabinets-White": "https://static.wixstatic.com/media/15e926_6c544f13795644e894c9c05fe33b9c32~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Redline_Ceiling-Redline_Cabinets-Bullet": "https://static.wixstatic.com/media/15e926_8512e867d6ae4763a15a1ee55748e366~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Redline_Ceiling-Redline_Cabinets-GreenSlate": "https://static.wixstatic.com/media/15e926_04e8b9b6665b4011b35d900314fec481~mv2.jpg",
+        "Floor-TurinOakSlackedOyster_Walls-Redline_Ceiling-Redline_Cabinets-White": "https://static.wixstatic.com/media/15e926_5519a930fc444218b67ac1e82b1aac08~mv2.jpg"
+      }
+    },
+    "variationOptions": {
+      "corrugated_iron_grey_friars": "https://static.wixstatic.com/media/15e926_4455882090fa4a55bd011926625279be~mv2.png",
+      "corrugated_iron_ebony": "https://static.wixstatic.com/media/15e926_a69a5626c41142f8b9e0683c780e34f8~mv2.png",
+      "corrugated_iron_sandstone_grey": "https://static.wixstatic.com/media/15e926_3b09187d0a92427a8dde93b3aaf2f67f~mv2.png",
+      "seemlok_printed_corten_steel_corrugated_iron_ebony": "https://static.wixstatic.com/media/15e926_21ef4563d3d048aeb03c838a8c6cd309~mv2.png",
+      "white_gib_redline_ply_lounge_ceiling": "https://static.wixstatic.com/media/15e926_253532d87bfa4effb660819c4b510e8e~mv2.png",
+      "white_gib_blondline_ply_lounge_ceiling": "https://static.wixstatic.com/media/15e926_e469d6ec89d34e7690afbd851c51ac62~mv2.png",
+      "redline_ply_everywhere": "https://static.wixstatic.com/media/15e926_8c458edd530a44c08e64e875c3a6354e~mv2.png",
+      "blondline_ply_everywhere": "https://static.wixstatic.com/media/15e926_3e5b7867ab1d444490086128e178b786~mv2.png",
+      "smooth_oak_high_noon": "https://static.wixstatic.com/media/15e926_346bea30e3f74388a8488a7ac209fade~mv2.png",
+      "turin_oak_slacked_oyster": "https://static.wixstatic.com/media/15e926_32ffef548dae45b3be8d7fd1065100ec~mv2.jpg",
+      "swiss_oak_burn": "https://static.wixstatic.com/media/15e926_3ab07a1768e240d69874c2bec2781e82~mv2.jpg",
+      "cabinets_bullet": "https://static.wixstatic.com/media/15e926_df488902a9db4801ae6ad3dc5ad2ca29~mv2.png",
+      "cabinets_green_slate": "https://static.wixstatic.com/media/15e926_3a2eea29e4b648b08a16754b122c5d0d~mv2.png",
+      "cabinets_white": "https://static.wixstatic.com/media/15e926_85ea25a04eb54e57a810f46070cac948~mv2.png",
+      "none_flooring": "https://static.wixstatic.com/media/15e926_a69a5626c41142f8b9e0683c780e34f8~mv2.png"
+    },
+    "floorPlan": "https://static.wixstatic.com/media/ead5d3_ce1d18912cf648059965ff374956ec01~mv2.jpg"
+  }
+}

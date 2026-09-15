@@ -1,0 +1,70 @@
+{
+  "gib_redline_ceiling": {
+    "smooth_oak_high_noon": {
+      "white": "https://static.wixstatic.com/media/15e926_b4787acc85504e439e4792f57ac9c2c2~mv2.jpg",
+      "green_slate": "https://static.wixstatic.com/media/15e926_85c3cc77bb4a40f59af7083ec75dcfe0~mv2.jpg",
+      "bullet": "https://static.wixstatic.com/media/15e926_354e41ead75144c1916aef9173b49cea~mv2.jpg"
+    },
+    "turin_oak_slacked_oyster": {
+      "white": "https://static.wixstatic.com/media/15e926_5ab3c52c57574065b82b33e6eab51b18~mv2.jpg",
+      "green_slate": "https://static.wixstatic.com/media/15e926_a01d689c34484bd1a6dbfeb033b7a035~mv2.jpg",
+      "bullet": "https://static.wixstatic.com/media/15e926_427a71cb7e324b8bb766b9d421ada3ff~mv2.jpg"
+    },
+    "swiss_oak_burn": {
+      "white": "https://static.wixstatic.com/media/15e926_428ff2e5faa2416ab10e698d9b2f4af9~mv2.jpg",
+      "green_slate": "https://static.wixstatic.com/media/15e926_1c3be03162b645669706e18db483ddf1~mv2.jpg",
+      "bullet": "https://static.wixstatic.com/media/15e926_73e410f58d0f4550954b90c0572ee2e9~mv2.jpg"
+    }
+  },
+  "gib_birch_ceiling": {
+    "smooth_oak_high_noon": {
+      "white": "https://static.wixstatic.com/media/15e926_38f747540f874b7ebc88b5964ddb1800~mv2.jpg",
+      "green_slate": "https://static.wixstatic.com/media/15e926_7b2cb88e39c94db1b1504ea866e8f39d~mv2.jpg",
+      "bullet": "https://static.wixstatic.com/media/15e926_cd660897bfee4050b1feaca2642dc79f~mv2.jpg"
+    },
+    "turin_oak_slacked_oyster": {
+      "white": "https://static.wixstatic.com/media/15e926_8125cc23907f4f028fa12a308c94be3d~mv2.jpg",
+      "green_slate": "https://static.wixstatic.com/media/15e926_1a229b3ca5974b49867bacdf534b590f~mv2.jpg",
+      "bullet": "https://static.wixstatic.com/media/15e926_965f693dbfe541809332d6eccfd9c121~mv2.jpg"
+    },
+    "swiss_oak_burn": {
+      "white": "https://static.wixstatic.com/media/15e926_96e46cccfdee4c88bb7fa493a8a6b76c~mv2.jpg",
+      "green_slate": "https://static.wixstatic.com/media/15e926_d3a5510f2b8446c4b9d565d0ab5c6e20~mv2.jpg",
+      "bullet": "https://static.wixstatic.com/media/15e926_fc05b2e349594cf7a68eed9758c637da~mv2.jpg"
+    }
+  },
+  "redline_everywhere": {
+    "smooth_oak_high_noon": {
+      "white": "https://static.wixstatic.com/media/15e926_623de2d9595d4d2583dfb6ef7e403c1d~mv2.jpg",
+      "green_slate": "https://static.wixstatic.com/media/15e926_a7f14de5a36f4c05b2c59e12a75b3cf4~mv2.jpg",
+      "bullet": "https://static.wixstatic.com/media/15e926_f6b276c3c9b0410d8052e7bea6400120~mv2.jpg"
+    },
+    "turin_oak_slacked_oyster": {
+      "white": "https://static.wixstatic.com/media/15e926_7fb1fcadddbd4095867706fb2822bcdc~mv2.jpg",
+      "green_slate": "https://static.wixstatic.com/media/15e926_eb44c4be7ffa41a39ada5c2667ad7e59~mv2.jpg",
+      "bullet": "https://static.wixstatic.com/media/15e926_5ee0f7a578e04bbd923c95d1e4316b0f~mv2.jpg"
+    },
+    "swiss_oak_burn": {
+      "white": "https://static.wixstatic.com/media/15e926_6ee59b1d24de4bd3834966b5e2b2a53f~mv2.jpg",
+      "green_slate": "https://static.wixstatic.com/media/15e926_60e107e8a3664b12bcf6eaecfc2e6498~mv2.jpg",
+      "bullet": "https://static.wixstatic.com/media/15e926_010dfeed5dbc46e1bbdcba5c63301618~mv2.jpg"
+    }
+  },
+  "birch_everywhere": {
+    "smooth_oak_high_noon": {
+      "white": "https://static.wixstatic.com/media/15e926_9e7b634a621b418999e3ff1525998037~mv2.jpg",
+      "green_slate": "https://static.wixstatic.com/media/15e926_1b47645e209b4a5ca358520461008a35~mv2.jpg",
+      "bullet": "https://static.wixstatic.com/media/15e926_a86f6b315b6a4dcca725eed1faa69f6e~mv2.jpg"
+    },
+    "turin_oak_slacked_oyster": {
+      "white": "https://static.wixstatic.com/media/15e926_09f0d28c8df64840b8fa4859982a5535~mv2.jpg",
+      "green_slate": "https://static.wixstatic.com/media/15e926_74123b6d8bff4f969dd5b8eabdbda0ba~mv2.jpg",
+      "bullet": "https://static.wixstatic.com/media/15e926_f582e9f8af54448d8437b8ff9170523b~mv2.jpg"
+    },
+    "swiss_oak_burn": {
+      "white": "https://static.wixstatic.com/media/15e926_77b1804cf7ab42f184479d057fd60e09~mv2.jpg",
+      "green_slate": "https://static.wixstatic.com/media/15e926_0ea185ea6c5443e88fec06260f94c503~mv2.jpg",
+      "bullet": "https://static.wixstatic.com/media/15e926_09b7342a78fe4201aee2f2f2fb3f4c88~mv2.jpg"
+    }
+  }
+}
