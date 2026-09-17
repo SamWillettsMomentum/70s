@@ -38,7 +38,7 @@ Must use Slick Slider, loaded via CDN. Document in implementation that Slick is 
 
 ### Core Rules
 
-- Exactly 2 slides.
+- Exactly 4 slides.
 - Each slide represents a different camera angle or room grouping.
 - Each slide contains multiple images stacked in the same position.
 - Only one image per slide visible at any time.
@@ -230,9 +230,11 @@ This update replaces previous assumptions about slide count and partial coverage
 
 The interior image system is now locked to:
 
-- Exactly 2 slides
+- Exactly 4 slides
   1. Living Area
   2. Bathroom
+  3. Laundry
+  4. Wardrobe
 - 36 variation images per slide
 - Full permutation coverage of all supported interior option combinations
 
@@ -242,7 +244,7 @@ All combinations are supported. No partial matching logic is required.
 
 ### 15.1 Slide Structure (Final)
 
-The Slick slider must contain exactly 2 slides:
+The Slick slider must contain exactly 4 slides:
 
 ### Slide 1 — Living Area  
 Contains:
@@ -250,6 +252,16 @@ Contains:
 - 36 variation images (one per interior permutation)
 
 ### Slide 2 — Bathroom  
+Contains:
+- 1 base fallback image
+- 36 variation images (one per interior permutation)
+
+### Slide 3 — Laundry  
+Contains:
+- 1 base fallback image
+- 36 variation images (one per interior permutation)
+
+### Slide 4 — Wardrobe  
 Contains:
 - 1 base fallback image
 - 36 variation images (one per interior permutation)
@@ -272,6 +284,8 @@ Structure conceptually:
 - Top level keys:
   - `living`
   - `bathroom`
+  - `laundry`
+  - `wardrobe`
 - Each contains:
   - `base` (fallback URL)
   - Variation key → Wix CDN URL mapping
@@ -387,8 +401,8 @@ Fallback must be silent and non-blocking.
 
 ### Performance Rules and Image-Loading Strategy
 
-- Exactly 72 variation images total (36 per slide). Performance must be managed carefully.
-- **Single image-loading strategy (authoritative):** Load only what is needed for the current view. Preload the base image for each slide (2 images) so fallbacks are instant. For variation images: load the image matching the current variation key for the visible slide when it is needed; when the user changes options or switches slides, load the newly required variation image(s) on demand. Do not preload all 72 variation images on page load. This keeps initial load minimal and is the standard approach for many images on one page.
+- Exactly 144 variation images total (36 per slide). Performance must be managed carefully.
+- **Single image-loading strategy (authoritative):** Load only what is needed for the current view. Preload the base image for each slide (4 images) so fallbacks are instant. For variation images: load the image matching the current variation key for the visible slide when it is needed; when the user changes options or switches slides, load the newly required variation image(s) on demand. Do not preload all 144 variation images on page load. This keeps initial load minimal and is the standard approach for many images on one page.
 - Avoid destroying/creating image elements on variation change (prefer src update or visibility toggling).
 - O(1) registry lookup required.
 - No conditional chains allowed in resolution logic.
@@ -409,6 +423,8 @@ When adding or updating images:
 4. Insert under:
    - `living[variation_key]`
    - `bathroom[variation_key]`
+   - `laundry[variation_key]`
+   - `wardrobe[variation_key]`
 5. Verify deterministic key generation matches registry entry.
 
 No UI logic changes permitted during this process.
@@ -417,7 +433,7 @@ No UI logic changes permitted during this process.
 
 ### Non-Negotiable Invariants (Final)
 
-- Exactly 2 slides.
+- Exactly 4 slides.
 - 36 variation keys per slide.
 - Full permutation coverage.
 - All image URLs centralized in registry.

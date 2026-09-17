@@ -63,7 +63,7 @@ Choice `id` values must match:
 
 | Field | Description |
 |-------|-------------|
-| **interior** | Keys are slide types: `living`, `bathroom`. Each value is an object with a **base** URL (fallback) and variation keys (e.g. `Floor-X_Walls-Y_Ceiling-Z_Cabinets-W`) mapping to image URLs. Variation keys must align with the app’s `buildVariationKey()` output. |
+| **interior** | Keys are slide types: `living`, `bathroom`, `laundry`, `wardrobe`. Each value is an object with a **base** URL (fallback) and variation keys (e.g. `Floor-X_Walls-Y_Ceiling-Z_Cabinets-W`) mapping to image URLs. Variation keys must align with the app’s `buildVariationKey()` output. |
 | **variationOptions** | Object: choice **id** → image URL. Used for sidebar option boxes when `display` is `"box_with_image"`. |
 | **floorPlan** | Single URL for the Floorplan tab. |
 
